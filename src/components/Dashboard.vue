@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-3">
+  <div class="bg-white">
 <!--    <h3 class="text-lg font-medium mb-4">{{ title }}</h3>-->
-    <div class="p-1 md:p-1 bg-gray-50 min-h-screen">
+    <div class="p-1 md:p-1 min-h-screen">
       <!-- Greeting Section -->
       <div class="bg-green-50 p-6 md:p-10 rounded-lg flex flex-col md:flex-row items-center justify-between">
         <!-- Left Side - Text Content -->
@@ -27,7 +27,7 @@
 
         <!-- Right Side - Illustration -->
         <div class="hidden md:block w-64">
-          <img src="@/assets/logo.svg" alt="Illustration" class="w-full h-auto" />
+          <img src="@/assets/images/header.svg" alt="Illustration" class="w-full h-auto" />
         </div>
       </div>
 
