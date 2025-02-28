@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 p-2 md:p-2 bg-gray-100 overflow-y-auto transition-all duration-300"
+  <div class="flex-1 p-2 md:px-5 bg-white overflow-y-auto transition-all duration-300"
        :class="{'md:ml-[8px]': !isNavOpen, 'ml-0': true, 'md:ml-1/5': isNavOpen}">
     <div class="flex items-center">
       <button @click="handleToggle" class="mr-4 p-2 rounded bg-gray-200 hover:bg-gray-300 md:hidden">
@@ -13,14 +13,10 @@
     <div class="flex flex-col md:flex-row gap-4">
       <!-- Main Content Area - 70% width on desktop -->
       <div class="w-full md:w-7/10">
-        <Dashboard :title="`${pageTitle} Content`">
-          <slot name="content">
-            <!-- Default content goes here -->
-            <p>This is the main content area for {{ pageTitle }}. It occupies 70% of the width.</p>
-          </slot>
-        </Dashboard>
-        <DataTable/>
+        <Greetings/>
         <DashboardMetrics/>
+        <DataTable/>
+        <DashboardChart/>
       </div>
 
       <!-- Sidebar - 30% width on desktop -->
@@ -44,6 +40,8 @@ import Sidebar from '@/components/Sidebar.vue'
 import Dashboard from '@/components/Dashboard.vue'
 import DashboardMetrics from '@/components/DashboardMetrics.vue'
 import DataTable from '@/components/DataTable.vue'
+import Greetings from '@/components/Greetings.vue'
+import DashboardChart from '@/components/DashboardChart.vue'
 
 
 const props = defineProps({

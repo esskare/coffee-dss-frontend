@@ -12,6 +12,15 @@ export default {
         '3/10': '30%',
         '7/10': '70%',
       },
+      colors:{
+        'secondary-400-main':'#85B654',
+        'primary-800-main':'#1E4938',
+        'primary-500-neutral':'#222222',
+        'accent-pastel-green':'#E7F9F5',
+        'accent-pastel-tangerine':'#FFEFE8',
+        'accent-pastel-violet':'#F7EBFD',
+        'custom-grey':'#F7F7F7'
+      },
       margin: {
         '1/10': '10%',
       },

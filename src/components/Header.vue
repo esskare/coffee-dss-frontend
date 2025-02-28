@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full dark:bg-gray-800 p-1">
-    <div class="flex flex-col md:flex-row items-center justify-between p-2">
+  <div class="w-full dark:bg-gray-800">
+    <div class="flex flex-col md:flex-row items-center justify-between py-3">
       <!-- Search Box -->
       <div class="relative w-full md:w-auto mb-2 md:mb-0">
       <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -16,7 +16,7 @@
       <!-- Right Section -->
       <div class="flex items-center space-x-4">
         <button class="hidden md:flex items-center space-x-2 px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm">
-          <span>TAKE A TOUR</span>
+          <span class="font-bold">Take a Tour</span>
           <span>⏳</span>
         </button>
 
@@ -29,7 +29,7 @@
         <div class="relative">
           <button class="flex items-center space-x-2 focus:outline-none">
             <img src="@/assets/images/martha.svg" alt="Profile" class="w-8 h-8 md:w-10 md:h-10 rounded-full" />
-            <span @click="toggleDropdown" class="text-sm md:text-base">Martha ▼</span>
+            <span @click="toggleDropdown" class="text-sm font-bold">Reuben ▼</span>
           </button>
 
           <!-- Dropdown Menu -->
