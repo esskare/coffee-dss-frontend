@@ -5,7 +5,6 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
 import { Doughnut } from "vue-chartjs";
 
 // Define props for dynamic data

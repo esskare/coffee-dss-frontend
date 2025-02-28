@@ -1,28 +1,28 @@
 <template>
   <div class="p-4 max-w-md mx-auto">
-    <h2 class="text-xl font-bold mb-4">Activity View</h2>
+    <h2 class="text-base font-bold mb-4">Activity View</h2>
 
     <div v-for="(activity, index) in activities" :key="index" class="border-b pb-4 mb-4">
       <div class="flex items-start gap-3">
         <div class="w-10 h-10 flex items-center justify-center rounded-lg" :class="activity.bgColor">
-          <img :src="activity.icon" class="w-6 h-6" />
+          <img :src="activity.icon" class="w-6 h-6"  alt=""/>
         </div>
         <div class="flex-1">
           <div class="flex justify-between text-sm text-gray-500">
-            <span class="font-semibold text-gray-900">{{ activity.title }}</span>
-            <span>1 Hours Ago</span>
+            <span class="font-bold text-gray-900 text-sm">{{ activity.title }}</span>
+            <span class="text-sm">2 Hours Ago</span>
           </div>
           <p class="text-gray-600 text-sm">{{ activity.description }}</p>
 
           <div class="mt-2 flex gap-2" v-if="activity.buttons">
-            <button class="px-4 py-2 text-gray-500 bg-gray-200 rounded-lg" v-if="activity.buttons.reject">Reject</button>
-            <button class="px-4 py-2 text-white bg-green-600 rounded-lg" v-if="activity.buttons.approve">{{ activity.buttons.approve }}</button>
+            <button class="px-4 py-2 text-gray-500 bg-gray-200 rounded-lg text-sm" v-if="activity.buttons.reject">Reject</button>
+            <button class="px-4 py-2 text-white bg-green-600 rounded-lg text-sm" v-if="activity.buttons.approve">{{ activity.buttons.approve }}</button>
           </div>
         </div>
       </div>
     </div>
 
-    <a href="#" class="text-green-600 font-semibold flex items-center gap-1">
+    <a href="#" class="text-green-600 font-bold text-sm flex items-center gap-1">
       View All Notifications →
     </a>
 

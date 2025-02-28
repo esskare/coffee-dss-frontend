@@ -5,7 +5,6 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
 import { Line } from "vue-chartjs";
 
 // Define props for dynamic data

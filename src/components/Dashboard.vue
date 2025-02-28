@@ -57,7 +57,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
 import Card from '@/components/Card.vue'
 
 defineProps({

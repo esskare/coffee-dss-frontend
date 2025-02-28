@@ -29,7 +29,7 @@
         <div class="relative">
           <button class="flex items-center space-x-2 focus:outline-none">
             <img src="@/assets/images/martha.svg" alt="Profile" class="w-8 h-8 md:w-10 md:h-10 rounded-full" />
-            <span @click="toggleDropdown" class="text-sm font-bold">Reuben ▼</span>
+            <span @click="toggleDropdown" class="text-sm"><span class="font-bold">Reuben</span> v</span>
           </button>
 
           <!-- Dropdown Menu -->
@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import { defineProps, onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 const isDropdownOpen = ref(false);
 const dropdownRef = ref(null);

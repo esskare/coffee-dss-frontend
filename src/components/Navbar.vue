@@ -1,53 +1,68 @@
 <template>
-  <div class="h-screen bg-custom-grey text-white transition-all duration-200 md:relative z-10 shadow-lg"
+  <div class="h-screen bg-custom-grey text-white transition-all duration-200 md:relative z-10 shadow-lg flex flex-col"
        :class="[
          isNavOpen ? 'w-48 md:w-1/6 fixed' : 'w-16 md:fixed ',
-         // Hide completely on mobile when closed
          !isNavOpen && isMobile ? 'hidden' : ''
        ]">
     <div class="p-4 flex justify-between items-center border-b border-gray-300">
       <img src="@/assets/images/navcoffeedss.svg" alt="Navigation Icon" class="w-6 h-6" :class="{ 'hidden': !isNavOpen }">
       <h1 class="font-bold text-base truncate text-primary-800-main" :class="{ 'hidden': !isNavOpen }">Coffee DSS</h1>
       <button @click="handleToggle" class="p-2 rounded hover:bg-gray-300 focus:outline-none flex-shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-current text-primary-800-main" fill="none" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 stroke-current text-primary-800-main" fill="none" viewBox="0 0 24 24">
           <path v-if="isNavOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
     </div>
 
-    <nav class="mt-3 p-2" style="max-height: calc(100vh - 70px);">
-      <ul>
-        <li v-for="(item, index) in navItems" :key="index"
-            class="hover:bg-primary-800-main cursor-pointer transition-colors duration-400 text-primary-500-neutral hover:text-white rounded-md group">
-          <div class="px-3 py-2 flex items-center justify-between" @click="toggleSubmenu(index)">
-            <div class="flex items-center">
-              <VsxIcon :iconName="item.icon" :class="`hover:text-white`" size="15" type="linear" />
-              <span :class="{ 'hidden': !isNavOpen }" class="whitespace-nowrap text-sm duration-100 px-2">{{ item.name }}</span>
+    <!-- Navigation Items -->
+    <div class="flex-grow overflow-y-auto">
+      <nav class="mt-3 p-2">
+        <ul>
+          <li v-for="(item, index) in navItems" :key="index"
+              class="hover:bg-primary-800-main cursor-pointer transition-colors duration-400 text-primary-500-neutral hover:text-white rounded-md group">
+            <div class="px-3 py-2 flex items-center justify-between" @click="toggleSubmenu(index)">
+              <div class="flex items-center">
+                <VsxIcon :iconName="item.icon" :class="`hover:text-white`" size="15" type="linear" />
+                <span :class="{ 'hidden': !isNavOpen }" class="whitespace-nowrap text-sm duration-100 px-2">{{ item.name }}</span>
+              </div>
+              <span
+                v-if="item.children && item.children.length && isNavOpen"
+                class="ml-2 transform transition-transform duration-300 text-black group-hover:text-white text-base"
+              >
+                {{ item.isOpen ? 'v' : '>' }}
+              </span>
             </div>
-            <span
-              v-if="item.children && item.children.length && isNavOpen"
-              class="ml-2 transform transition-transform duration-300 text-black group-hover:text-white text-sm"
-            >
-                  {{ item.isOpen ? '▼' : '▶' }}
-                </span>
-          </div>
-          <div v-if="item.children && item.children.length"
-               class="overflow-hidden transition-all duration-300 ease-in-out"
-               :class="item.isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'"
-               :style="{ 'margin-left': '1.5rem' }">
-            <div class="pl-2 border-l border-gray-500">
-              <div v-for="(child, childIndex) in item.children" :key="`${index}-${childIndex}`"
-                   class="py-2 cursor-pointer transition-colors duration-150 flex items-center"
-                   @click.stop="handleSubmenuItemClick(child, index, childIndex)">
-<!--                <span class="mr-3 text-md flex-shrink-0">{{ child.icon }}</span>-->
-                <span :class="{ 'hidden': !isNavOpen }" class="whitespace-nowrap text-sm">{{ child.name }}</span>
+            <div v-if="item.children && item.children.length"
+                 class="overflow-hidden transition-all duration-300 ease-in-out"
+                 :class="item.isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'"
+                 :style="{ 'margin-left': '1.5rem' }">
+              <div class="pl-2 border-l border-gray-500">
+                <div v-for="(child, childIndex) in item.children" :key="`${index}-${childIndex}`"
+                     class="py-2 cursor-pointer transition-colors duration-150 flex items-center"
+                     @click.stop="handleSubmenuItemClick(child, index, childIndex)">
+                  <span :class="{ 'hidden': !isNavOpen }" class="whitespace-nowrap text-sm">{{ child.name }}</span>
+                </div>
               </div>
             </div>
-          </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Bottom Section (Settings & Logout) -->
+    <div class="p-4 border-t border-gray-300">
+      <ul>
+        <li class="hover:bg-primary-800-main cursor-pointer transition-colors duration-400 text-primary-500-neutral hover:text-white rounded-md group p-2 flex items-center">
+          <VsxIcon iconName="Settings" size="15" type="linear" />
+          <span :class="{ 'hidden': !isNavOpen }" class="whitespace-nowrap text-sm duration-100 px-2">Settings</span>
+        </li>
+        <li class="hover:bg-red-500 cursor-pointer transition-colors duration-400 text-red-500 hover:text-white rounded-md group p-2 flex items-center mt-2">
+          <VsxIcon iconName="Logout" size="15" type="linear" />
+          <span :class="{ 'hidden': !isNavOpen }" class="whitespace-nowrap text-sm duration-100 px-2">Logout</span>
         </li>
       </ul>
-    </nav>
+    </div>
   </div>
 
   <!-- Overlay to close navigation on mobile when opened -->
@@ -55,6 +70,7 @@
        class="fixed inset-0 bg-black bg-opacity-50 z-0 md:hidden"
        @click="handleToggle"></div>
 </template>
+
 
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue'
@@ -73,16 +89,6 @@ const props = defineProps({
 // Define emits
 const emit = defineEmits(['toggle']);
 
-// Define navigation items
-/*const navItems = [
-  { name: 'Dashboard', icon: '📊' },
-  { name: 'Projects', icon: '📁' },
-];*/
-// defineComponent({
-//   components: {
-//     VsxIcon,
-//   }
-// })
 const navItems = ref([
   {
     name: 'Dashboard',
@@ -91,8 +97,8 @@ const navItems = ref([
     children: []
   },
   {
-    name: 'Farmers',
-    icon: 'Home',
+    name: 'Farmer',
+    icon: 'People',
     isOpen: false,
     children: [
       { name: 'Onboard', icon: 'Home' },
@@ -100,8 +106,8 @@ const navItems = ref([
     ]
   },
   {
-    name: 'Parchment',
-    icon: 'Home',
+    name: 'Miller',
+    icon: 'Coffee',
     isOpen: false,
     children: [
       { name: 'Upload', icon: 'Home' },
@@ -109,14 +115,41 @@ const navItems = ref([
     ]
   },
   {
-    name: 'Clean Coffee',
-    icon: 'Home',
+    name: 'Warehouse',
+    icon: 'UserAdd',
     isOpen: false,
     children: [
       { name: 'Upload', icon: 'Home' },
       { name: 'View', icon: 'Home' }
     ]
-  }
+  },
+  {
+    name: 'Broker',
+    icon: 'Paperclip2',
+    isOpen: false,
+    children: [
+      { name: 'Upload', icon: 'Home' },
+      { name: 'View', icon: 'Home' }
+    ]
+  },
+  {
+    name: 'NCE',
+    icon: 'Verify',
+    isOpen: false,
+    children: [
+      { name: 'Upload', icon: 'Home' },
+      { name: 'View', icon: 'Home' }
+    ]
+  },
+  {
+    name: 'Payments',
+    icon: 'Wallet',
+    isOpen: false,
+    children: [
+      { name: 'Upload', icon: 'Home' },
+      { name: 'View', icon: 'Home' }
+    ]
+  },
 ]);
 
 
