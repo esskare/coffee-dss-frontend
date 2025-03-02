@@ -28,7 +28,7 @@
               </div>
               <span
                 v-if="item.children && item.children.length && isNavOpen"
-                class="ml-2 transform transition-transform duration-300 text-black group-hover:text-white text-base"
+                class="ml-2 transform transition-transform duration-300 text-primary-500-neutral group-hover:text-white text-base"
               >
                 {{ item.isOpen ? 'v' : '>' }}
               </span>
@@ -75,8 +75,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { VsxIcon } from "vue-iconsax";
-// import { Home2 } from 'iconsax-vue'
-import { defineComponent } from 'vue'
 // Define props for component
 const props = defineProps({
   iconName: String,

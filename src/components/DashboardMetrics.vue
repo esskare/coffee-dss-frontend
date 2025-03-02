@@ -6,6 +6,9 @@
       percentage="15.4%"
       bgColor="bg-accent-pastel-green"
       strokeColor="text-green-500"
+      icon="Coffee"
+      iconBg="bg-accent-pastel-violet1"
+      extra1="Kgs"
     />
     <Card
       title="Orders Processed"
@@ -13,6 +16,8 @@
       percentage="8.2%"
       bgColor="bg-accent-pastel-tangerine"
       strokeColor="text-blue-500"
+      icon="People"
+      iconBg="#F7EBFD"
     />
     <Card
       title="Revenue Generated"
@@ -20,6 +25,8 @@
       percentage="22.3%"
       bgColor="bg-accent-pastel-violet"
       strokeColor="text-yellow-500"
+      icon="Wallet"
+      iconBg="accent-pastel-violet1"
     />
   </div>
 </template>

@@ -1,0 +1,40 @@
+<template>
+  <!-- Greeting Section -->
+  <div class="bg-green-50 p-6 md:p-9 rounded-lg flex flex-col md:flex-row items-center justify-between mt-5">
+    <!-- Left Side - Text Content -->
+    <div class="max-w-lg">
+      <h1 class="text-2xl md:text-3xl font-semibold">
+        Good afternoon <span class="inline-block">👋</span>
+      </h1>
+      <h2 class="text-3xl md:text-4xl font-bold mt-1">Reubeniiiii Kihiu</h2>
+      <p class="text-gray-600 mt-3">
+        Here are a few things you can do to get your day started
+      </p>
+
+      <!-- Buttons -->
+      <div class="mt-6 flex gap-4">
+        <button class="bg-primary-800-main text-white px-6 py-3 rounded-lg text-sm ">
+          Record Coffee Delivery
+        </button>
+        <button class="bg-secondary-400-main text-white px-6 py-3 rounded-lg text-sm">
+          Add New Farmer
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Side - Illustration -->
+    <div class="hidden md:block w-48">
+      <img src="@/assets/images/header.svg" alt="Illustration" class="w-full h-auto" />
+    </div>
+  </div>
+</template>
+
+<script setup>
+
+defineProps({
+  title: {
+    type: String,
+    default: 'Content'
+  }
+});
+</script>

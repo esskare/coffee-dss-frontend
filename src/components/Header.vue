@@ -9,7 +9,7 @@
         <input
           type="text"
           placeholder="Search"
-          class="w-full md:w-96 pl-10 pr-4 py-2 border rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
+          class="w-full md:w-96 pl-10 pr-4 py-2 border-2 border-gray-300 rounded-lg text-gray-100 focus:outline-none focus:ring-1 text-sm focus:ring-gray-300"
         />
       </div>
 
@@ -17,12 +17,10 @@
       <div class="flex items-center space-x-4">
         <button class="hidden md:flex items-center space-x-2 px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm">
           <span class="font-bold">Take a Tour</span>
-          <span>⏳</span>
+          <span><VsxIcon :iconName="'VideoSquare'" size="18" type="linear" /></span>
         </button>
 
-        <button class="text-gray-500">
-          🔔
-        </button>
+        <span class="cursor-pointer"><VsxIcon :iconName="'Notification1'" size="18" type="linear" /></span>
 
         <!-- Profile Section -->
         <!-- Profile Section -->
@@ -33,7 +31,7 @@
           </button>
 
           <!-- Dropdown Menu -->
-          <div v-if="isDropdownOpen" class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg">
+          <div v-if="isDropdownOpen" class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-30">
             <ul class="py-2 text-gray-700">
               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Profile</li>
               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Settings</li>
@@ -48,6 +46,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
+import { VsxIcon } from 'vue-iconsax'
 
 const isDropdownOpen = ref(false);
 const dropdownRef = ref(null);
@@ -72,10 +71,10 @@ const closeDropdown = (event) => {
 };
 
 onMounted(() => {
-  document.addEventListener("mousedown", closeDropdown);
+  document.addEventListener("mouseup", closeDropdown);
 });
 
 onUnmounted(() => {
-  document.removeEventListener("mousedown", closeDropdown);
+  document.removeEventListener("mouseup", closeDropdown);
 });
 </script>

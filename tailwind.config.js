@@ -19,7 +19,9 @@ export default {
         'accent-pastel-green':'#E7F9F5',
         'accent-pastel-tangerine':'#FFEFE8',
         'accent-pastel-violet':'#F7EBFD',
-        'custom-grey':'#F7F7F7'
+        'accent-pastel-violet1':'#F7EBFD',
+        'custom-grey':'#F7F7F7',
+        'custom-grey2':'#E7E7E7'
       },
       margin: {
         '1/10': '10%',

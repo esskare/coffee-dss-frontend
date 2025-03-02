@@ -5,18 +5,19 @@
     <div v-for="(activity, index) in activities" :key="index" class="border-b pb-4 mb-4">
       <div class="flex items-start gap-3">
         <div class="w-10 h-10 flex items-center justify-center rounded-lg" :class="activity.bgColor">
-          <img :src="activity.icon" class="w-6 h-6"  alt=""/>
+<!--          <img :src="activity.icon" class="w-6 h-6"  alt=""/>-->
+          <VsxIcon :iconName="activity.icon" :class="`hover:text-white`" size="15" type="linear" />
         </div>
         <div class="flex-1">
           <div class="flex justify-between text-sm text-gray-500">
             <span class="font-bold text-gray-900 text-sm">{{ activity.title }}</span>
-            <span class="text-sm">2 Hours Ago</span>
+            <span class="text-sm">{{activity.timeline}}</span>
           </div>
           <p class="text-gray-600 text-sm">{{ activity.description }}</p>
 
           <div class="mt-2 flex gap-2" v-if="activity.buttons">
             <button class="px-4 py-2 text-gray-500 bg-gray-200 rounded-lg text-sm" v-if="activity.buttons.reject">Reject</button>
-            <button class="px-4 py-2 text-white bg-green-600 rounded-lg text-sm" v-if="activity.buttons.approve">{{ activity.buttons.approve }}</button>
+            <button class="px-4 py-2 text-white bg-secondary-400-main rounded-lg text-sm" v-if="activity.buttons.approve">{{ activity.buttons.approve }}</button>
           </div>
         </div>
       </div>
@@ -36,34 +37,55 @@
 
 <script setup>
 import { ref } from 'vue';
+import { VsxIcon } from "vue-iconsax";
 
 const activities = ref([
   {
     title: 'Review Contract',
     description: 'Kahawa Brokers Shared a contract with you to review',
-    icon: 'icon_contract.png',
-    bgColor: 'bg-purple-100',
+    timeline: '31 minutes ago',
+    icon: 'Document',
+    bgColor: 'bg-orange-100',
     buttons: { reject: true, approve: 'Review' }
   },
   {
-    title: 'Loan Application',
-    description: 'Boniface Githaiga Applied for a Cherry Loan of KES 12,000',
-    icon: 'icon_loan.png',
+    title: 'Parchment Upload',
+    description: 'Boniface Githaiga Uploaded a Parchement File',
+    timeline: '50 Minutes ago',
+    icon: 'DocumentForward',
     bgColor: 'bg-blue-100',
+    buttons: { reject: true, approve: 'Review' }
+  },
+  {
+    title: 'Dispatch Upload',
+    description: 'Brian Mnoma Uploaded a Dispatch File',
+    timeline: '1 hour ago',
+    icon: 'Ticket',
+    bgColor: 'bg-pink-100',
     buttons: { reject: true, approve: 'Review' }
   },
   {
     title: 'Auction Results',
     description: 'Today’s Auction at NCE was successful!',
-    icon: 'icon_auction.png',
+    timeline: '3 hours ago',
+    icon: 'Unlock',
     bgColor: 'bg-red-100',
     buttons: { approve: 'See Results' }
   },
   {
     title: 'Loan Application',
     description: 'Simon Nganga Applied for a Cherry Loan of KES 4,700',
-    icon: 'icon_loan.png',
-    bgColor: 'bg-blue-100',
+    timeline: '5 hours ago',
+    icon: 'Wallet',
+    bgColor: 'bg-violet-100',
+    buttons: { reject: true, approve: 'Review' }
+  },
+  {
+    title: 'Catalogue Approval',
+    description: 'Simon Nganga has approved catalogue xyz',
+    timeline: '5 hours ago',
+    icon: 'Wallet',
+    bgColor: 'bg-violet-100',
     buttons: { reject: true, approve: 'Review' }
   }
 ]);

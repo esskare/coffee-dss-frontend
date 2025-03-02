@@ -1,17 +1,14 @@
 <template>
   <div class="flex flex-col md:flex-row h-screen w-full overflow-hidden">
-    <!-- Navigation component -->
     <Navigation :is-nav-open="isNavOpen" @toggle="toggleNav" />
-
-    <!-- Main content area -->
     <MainContent :is-nav-open="isNavOpen" @toggle="toggleNav" />
+<!--    <Login/>-->
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import Navigation from '@/components/Navbar.vue'
-// import Navigation from './Nav.vue';
 import MainContent from '@/components/MainContent.vue';
 
 // Navigation state management - default to false (closed on mobile)

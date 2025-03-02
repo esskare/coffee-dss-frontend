@@ -1,13 +1,13 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3 mb-9">
     <!-- Coffee Sales Card -->
     <div class="bg-white shadow-md rounded-lg p-6">
-      <h2 class="text-lg font-semibold">Coffee Sales</h2>
+      <h2 class="font-bold text-base">Coffee Sales</h2>
 
       <!-- Year Selection -->
       <div class="flex space-x-3 mt-2">
         <button v-for="year in years" :key="year"
-                class="px-4 py-1 rounded-full text-sm font-medium"
+                class="px-4 py-1 rounded-full text-sm font-bold"
                 :class="selectedYear === year ? 'bg-green-200 text-green-800' : 'bg-gray-100 text-gray-600'"
                 @click="selectedYear = year">
           {{ year }}
@@ -18,11 +18,11 @@
       <div class="flex justify-between items-center mt-1">
         <div>
           <p class="text-gray-500 text-sm">Coffee sold (Kgs)</p>
-          <p class="text-2xl font-bold text-green-800">6,500,856</p>
+          <p class="text-lg font-bold text-green-800">6,500,856</p>
         </div>
         <div>
           <p class="text-purple-600 text-sm">Money paid</p>
-          <p class="text-2xl font-bold text-purple-600">64.9M</p>
+          <p class="text-lg font-bold text-purple-600">64.9M</p>
         </div>
       </div>
 
@@ -34,7 +34,7 @@
 
     <!-- Top Factories Card -->
     <div class="bg-white shadow-md rounded-lg p-6">
-      <h2 class="text-lg font-semibold">Top Factories</h2>
+      <h2 class="text-base font-bold">Top Factories</h2>
 
       <!-- Doughnut Chart -->
       <div class="w-64 mx-auto my-4">

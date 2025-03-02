@@ -1,20 +1,18 @@
 <template>
-  <div :class="['p-4 rounded-lg shadow-md flex flex-col w-full', bgColor]">
+  <div :class="['p-3 rounded-lg shadow-md flex flex-col w-full', bgColor]">
     <div class="flex items-center space-x-2">
-      <div :class="['p-2 rounded-full', strokeColor]">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2m2-2a2 2 0 100 4m0-4c1.1 0 2 .9 2 2m-2-2a2 2 0 110 4m0 4v4m0-4H8m4 0h4M4 4v16h16V4H4z"/>
-        </svg>
+      <div class="py-2 flex items-center justify-center rounded-full">
+        <VsxIcon :iconName="icon"  size="19" type="linear" />
       </div>
       <span class="text-gray-700 font-medium text-sm">{{ title }}</span>
     </div>
 
-    <div class="mt-2 flex items-end">
+    <div class="mt-1 flex items-end">
       <span class="text-2xl font-bold text-gray-900">{{ weight }}</span>
-      <span class="text-gray-500 ml-1 text-lg">{{extra1}}</span>
+      <span class="text-gray-500 ml-1 text-sm font-bold">{{extra1}}</span>
     </div>
 
-    <div class="flex items-center mt-2">
+    <div class="flex items-center mt-1">
       <span :class="['h-5 w-5', strokeColor]">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" :stroke="strokeColorLine">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
@@ -31,7 +29,10 @@
 </template>
 
 <script>
+import { VsxIcon } from 'vue-iconsax'
+
 export default {
+  components: { VsxIcon },
   props: {
     title: { type: String, required: true },
     weight: { type: String, required: true },
@@ -40,6 +41,8 @@ export default {
     bgColor: { type: String, default: "bg-green-100" },
     strokeColor: { type: String, default: "text-green-600" },
     strokeColorLine: { type: String, default: "#16a34a" },
+    icon: { type: String, required: true },
+    iconBg: { type: String, required: true },
   },
 };
 </script>

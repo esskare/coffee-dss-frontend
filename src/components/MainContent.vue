@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 p-2 md:px-5 bg-white overflow-y-auto transition-all duration-300"
+  <div class="flex-1 p-1 md:px-5 bg-white overflow-y-auto transition-all duration-300"
        :class="{'md:ml-[8px]': !isNavOpen, 'ml-0': true, 'md:ml-1/5': isNavOpen}">
     <div class="flex items-center">
       <button @click="handleToggle" class="mr-4 p-2 rounded bg-gray-200 hover:bg-gray-300 md:hidden">
@@ -15,19 +15,16 @@
       <div class="w-full md:w-7/10">
         <Greetings/>
         <DashboardMetrics/>
-        <DataTable/>
+        <DataTableDashboard/>
         <DashboardChart/>
       </div>
+
+      <!-- Vertical Divider -->
+      <div class="hidden md:block w-[1px] bg-custom-grey2 my-5"></div>
 
       <!-- Sidebar - 30% width on desktop -->
       <div class="w-full md:w-3/10">
         <Sidebar/>
-<!--        <Sidebar :title="`${pageTitle} Sidebar`">
-          <slot name="sidebar">
-            &lt;!&ndash; Default sidebar content goes here &ndash;&gt;
-            <p>This is the sidebar for {{ pageTitle }}. It occupies 30% of the width.</p>
-          </slot>
-        </Sidebar>-->
       </div>
     </div>
   </div>
@@ -42,6 +39,7 @@ import DashboardMetrics from '@/components/DashboardMetrics.vue'
 import DataTable from '@/components/DataTable.vue'
 import Greetings from '@/components/Greetings.vue'
 import DashboardChart from '@/components/DashboardChart.vue'
+import DataTableDashboard from '@/components/DataTableDashboard.vue'
 
 
 const props = defineProps({
