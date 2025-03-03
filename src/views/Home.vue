@@ -1,18 +1,15 @@
 <template>
   <div class="flex flex-col md:flex-row h-screen w-full overflow-hidden">
-<!--    <Navigation :is-nav-open="isNavOpen" @toggle="toggleNav" />
-    <MainContent :is-nav-open="isNavOpen" @toggle="toggleNav" />-->
-<!--    <Login/>-->
-<!--    <Miller/>-->
-    <RouterView/>
+    <Navigation :is-nav-open="isNavOpen" @toggle="toggleNav" />
+    <MainContent :is-nav-open="isNavOpen" @toggle="toggleNav" />
   </div>
 </template>
 
 <script setup>
+
 import { ref, onMounted } from 'vue';
 import Navigation from '@/components/Navbar.vue'
 import MainContent from '@/components/MainContent.vue';
-import Miller from '@/components/Miller.vue'
 
 // Navigation state management - default to false (closed on mobile)
 const isNavOpen = ref(false);

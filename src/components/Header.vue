@@ -4,7 +4,7 @@
       <!-- Search Box -->
       <div class="relative w-full md:w-auto mb-2 md:mb-0">
       <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-        🔍
+        <span><VsxIcon :iconName="'SearchNormal1'" size="18" type="linear" /></span>
       </span>
         <input
           type="text"
