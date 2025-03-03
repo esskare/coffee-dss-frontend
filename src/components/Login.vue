@@ -53,7 +53,7 @@
           <button
             type="submit"
             class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition duration-300"
-          >
+            @click="goToPage">
             Sign in
           </button>
         </form>
@@ -66,3 +66,12 @@
     </div>
   </div>
 </template>
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const goToPage = () => {
+  router.push('/dashboard'); // Change to your desired route
+};
+</script>
