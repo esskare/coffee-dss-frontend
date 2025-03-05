@@ -31,7 +31,17 @@
         <ul>
           <li v-for="(item, index) in navItems" :key="index"
               class="hover:bg-primary-800-main cursor-pointer transition-colors duration-400 text-primary-500-neutral hover:text-white rounded-md group">
-            <div class="px-3 py-2 flex items-center justify-between" @click="toggleSubmenu(index)">
+            <!-- Main Navigation Items -->
+            <router-link
+              v-if="item.route"
+              :to="item.route"
+              class="px-3 py-2 flex items-center justify-between">
+              <div class="flex items-center">
+                <VsxIcon :iconName="item.icon" class="hover:text-white" size="15" type="linear" />
+                <span v-if="isNavOpen" class="whitespace-nowrap text-sm duration-100 px-2">{{ item.name }}</span>
+              </div>
+            </router-link>
+            <div v-else class="px-3 py-2 flex items-center justify-between" @click="toggleSubmenu(index)">
               <div class="flex items-center">
                 <VsxIcon :iconName="item.icon" class="hover:text-white" size="15" type="linear" />
                 <span v-if="isNavOpen" class="whitespace-nowrap text-sm duration-100 px-2">{{ item.name }}</span>
@@ -40,16 +50,19 @@
                 {{ item.isOpen ? 'v' : '>' }}
               </span>
             </div>
+            <!-- Submenu Items -->
             <div v-if="item.children && item.children.length"
                  class="overflow-hidden transition-all duration-300 ease-in-out"
                  :class="item.isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'"
                  :style="{ 'margin-left': '1.5rem' }">
               <div class="pl-2 border-l border-gray-500">
-                <div v-for="(child, childIndex) in item.children" :key="`${index}-${childIndex}`"
-                     class="py-2 cursor-pointer transition-colors duration-150 flex items-center"
-                     @click.stop="handleSubmenuItemClick(child, index, childIndex)">
+                <router-link
+                  v-for="(child, childIndex) in item.children"
+                  :key="`${index}-${childIndex}`"
+                  :to="child.route"
+                  class="py-2 cursor-pointer transition-colors duration-150 flex items-center">
                   <span v-if="isNavOpen" class="whitespace-nowrap text-sm">{{ child.name }}</span>
-                </div>
+                </router-link>
               </div>
             </div>
           </li>
@@ -60,16 +73,26 @@
     <!-- Bottom Section (Settings & Logout) -->
     <div class="p-4 border-t border-gray-300">
       <ul>
-        <li class="hover:bg-primary-800-main cursor-pointer transition-colors duration-400 text-primary-500-neutral hover:text-white rounded-md group p-2 flex items-center">
-          <VsxIcon iconName="Settings" size="15" type="linear" />
-          <span v-if="isNavOpen" class="whitespace-nowrap text-sm duration-100 px-2">Settings</span>
+        <!-- Settings Link -->
+        <li>
+          <router-link
+            to="/test1"
+            class="hover:bg-primary-800-main cursor-pointer transition-colors duration-400 text-primary-500-neutral hover:text-white rounded-md group p-2 flex items-center">
+            <VsxIcon iconName="Settings" size="15" type="linear" />
+            <span v-if="isNavOpen" class="whitespace-nowrap text-sm duration-100 px-2">Settings</span>
+          </router-link>
         </li>
-        <li class="hover:bg-red-500 cursor-pointer transition-colors duration-400 text-red-500 hover:text-white rounded-md group p-2 flex items-center mt-2">
+
+        <!-- Logout Button -->
+        <li @click="handleLogout">
+        <span class="hover:bg-red-500 cursor-pointer transition-colors duration-400 text-red-500 hover:text-white rounded-md group p-2 flex items-center mt-2">
           <VsxIcon iconName="Logout" size="15" type="linear" />
           <span v-if="isNavOpen" class="whitespace-nowrap text-sm duration-100 px-2">Logout</span>
+        </span>
         </li>
       </ul>
     </div>
+
   </div>
 
   <!-- Overlay for Mobile -->
@@ -84,8 +107,8 @@ const isNavOpen = ref(false);
 const isMobile = ref(false);
 
 const navItems = ref([
-  { name: 'Dashboard', icon: 'Home', isOpen: false, children: [] },
-  { name: 'Farmer', icon: 'People', isOpen: false, children: [{ name: 'Onboard' }, { name: 'View' }] },
+  { name: 'Dashboard', icon: 'Home', isOpen: false, route: '/dashboard', children: [] },
+  { name: 'Farmer', icon: 'People', isOpen: false, children: [{ name: 'Onboard', route: '/test2'}, { name: 'View' }] },
   { name: 'Miller', icon: 'Coffee', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
   { name: 'Warehouse', icon: 'UserAdd', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
   { name: 'Broker', icon: 'Paperclip2', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
@@ -128,4 +151,13 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
 });
+
+const handleLogout = () => {
+  // Clear authentication data (e.g., remove token, reset user state)
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+
+  // Redirect to login page
+  router.push('/login');
+};
 </script>

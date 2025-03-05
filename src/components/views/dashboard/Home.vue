@@ -28,13 +28,10 @@
 </template>
 
 <script setup>
-import Navigation from '@/components/Navbar.vue'
-import Header from '@/components/Header.vue'
-import MainContent from '@/components/MainContent.vue'
-import Warehouse from '@/components/Warehouse.vue'
-import Greetings from '@/components/Greetings.vue'
-import DataTableDashboard from '@/components/DataTableDashboard.vue'
-import Sidebar from '@/components/Sidebar.vue'
-import DashboardMetrics from '@/components/DashboardMetrics.vue'
-import DashboardChart from '@/components/DashboardChart.vue'
+import Navigation from '@/components/views/base/Navbar.vue'
+import Header from '@/components/views/base/Header.vue'
+import Greetings from '@/components/views/dashboard/Greetings.vue'
+import DataTableDashboard from '@/components/views/dashboard/DataTableDashboard.vue'
+import Sidebar from '@/components/views/dashboard/Sidebar.vue'
+import DashboardMetrics from '@/components/views/dashboard/DashboardMetrics.vue'
 </script>

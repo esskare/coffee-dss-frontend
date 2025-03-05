@@ -10,9 +10,6 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import Navigation from '@/components/Navbar.vue'
-import MainContent from '@/components/MainContent.vue';
-import Miller from '@/components/Miller.vue'
 
 // Navigation state management - default to false (closed on mobile)
 const isNavOpen = ref(false);

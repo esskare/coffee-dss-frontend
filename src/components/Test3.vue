@@ -9,10 +9,6 @@
 
 <script setup lang="ts">
 
-import BaseLayout from '@/components/BaseLayout.vue'
-import Sidebar from '@/components/Sidebar.vue'
-import Greetings from '@/components/Greetings.vue'
-import DataTableDashboard from '@/components/DataTableDashboard.vue'
-import DashboardMetrics from '@/components/DashboardMetrics.vue'
+import BaseLayout from '@/components/views/base/BaseLayout.vue'
 import Stepper from '@/components/Stepper.vue'
 </script>

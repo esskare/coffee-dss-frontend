@@ -1,9 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import Home from '../views/Home.vue'
-import Login from '@/components/Login.vue'
-import Miller from '../components/Miller.vue'
-import Broker from '@/components/Broker.vue'
+import Home from '@/components/views/dashboard/Home.vue'
+import Login from '@/components/views/auxilliary/Login.vue'
 import Test1 from '@/components/Test1.vue'
 import Test2 from '@/components/Test2.vue'
 import Test3 from '@/components/Test3.vue'
@@ -20,16 +18,6 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: Home,
-    },
-    {
-      path: '/miller',
-      name: 'miller',
-      component: Miller,
-    },
-    {
-      path: '/broker',
-      name: 'broker',
-      component: Broker,
     },
     {
       path: '/test1',

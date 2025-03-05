@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import Card from '@/components/Card.vue'
+import Card from '@/components/views/layout/Card.vue'
 
 defineProps({
   title: {
@@ -41,3 +41,4 @@ defineProps({
   }
 });
 </script>
+

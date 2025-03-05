@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 
-import BaseLayout from '@/components/BaseLayout.vue'
-import Sidebar from '@/components/Sidebar.vue'
-import Greetings from '@/components/Greetings.vue'
+import BaseLayout from '@/components/views/base/BaseLayout.vue'
+import Sidebar from '@/components/views/dashboard/Sidebar.vue'
+import Greetings from '@/components/views/dashboard//Greetings.vue'
 </script>
