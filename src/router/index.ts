@@ -4,6 +4,9 @@ import Home from '../views/Home.vue'
 import Login from '@/components/Login.vue'
 import Miller from '../components/Miller.vue'
 import Broker from '@/components/Broker.vue'
+import Test1 from '@/components/Test1.vue'
+import Test2 from '@/components/Test2.vue'
+import Test3 from '@/components/Test3.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +30,21 @@ const router = createRouter({
       path: '/broker',
       name: 'broker',
       component: Broker,
+    },
+    {
+      path: '/test1',
+      name: 'test1',
+      component: Test1,
+    },
+    {
+      path: '/test2',
+      name: 'test2',
+      component: Test2,
+    },
+    {
+      path: '/test3',
+      name: 'test3',
+      component: Test3,
     },
     // {
     //   path: '/login',

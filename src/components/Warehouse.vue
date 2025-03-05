@@ -1,13 +1,13 @@
 <template>
-  <div class="flex-1 p-1 md:px-5 bg-white overflow-y-auto transition-all duration-300">
+  <div class="flex-1 p-1 md:px-1 bg-white overflow-y-auto transition-all duration-300">
     <!-- Your main content goes here -->
-    <div class="flex flex-col md:flex-row gap-4">
+    <div class="flex flex-col md:flex-row">
       <!-- Main Content Area - 70% width on desktop -->
-      <div class="w-full md:w-7/10">
+      <div class="md:w-7/10">
         <Greetings/>
-        <DashboardMetrics/>
-        <DataTableDashboard/>
-        <DashboardChart/>
+<!--        <DashboardMetrics/>-->
+<!--        <DataTableDashboard/>-->
+<!--        <DashboardChart/>-->
       </div>
 
       <!-- Vertical Divider -->

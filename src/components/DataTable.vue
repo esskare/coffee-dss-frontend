@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-screen overflow-auto p-2">
+  <div class="">
     <table ref="dataTable" class="display w-full border rounded-lg"></table>
   </div>
 </template>

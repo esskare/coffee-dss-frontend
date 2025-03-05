@@ -1,22 +1,22 @@
 <template>
   <!-- Greeting Section -->
-  <div class="bg-green-50 p-6 md:p-9 rounded-lg flex flex-col md:flex-row items-center justify-between mt-5">
+  <div class="bg-green-50 p-6 md:p-9 rounded-lg flex flex-col md:flex-row items-center justify-between mt-5 m-2">
     <!-- Left Side - Text Content -->
     <div class="max-w-lg">
       <h1 class="text-2xl md:text-3xl font-semibold">
         Good afternoon <span class="inline-block">👋</span>
       </h1>
       <h2 class="text-3xl md:text-4xl font-bold mt-1">Reuben Kihiu</h2>
-      <p class="text-gray-600 mt-3">
+      <h2 class="text-base text-gray-600 mt-1"> Here are a few things to get your day started Here are a few things to get your day started</h2>
+<!--      <h1 class="text-gray-600 mt-1">
         Here are a few things you can do to get your day started
-      </p>
+      </h1>-->
 
-      <!-- Buttons -->
       <div class="mt-6 flex gap-4">
-        <button class="bg-primary-800-main text-white px-6 py-3 rounded-lg text-sm ">
+        <button class="bg-primary-800-main text-white px-4 py-2 rounded-lg text-sm ">
           Record Coffee Delivery
         </button>
-        <button class="bg-secondary-400-main text-white px-6 py-3 rounded-lg text-sm">
+        <button class="bg-secondary-400-main text-white px-4 py-2 rounded-lg text-sm">
           Add New Farmer
         </button>
       </div>

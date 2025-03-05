@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3">
+  <div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 p-2">
     <Card
       title="Coffee Delivered Today"
       weight="5,370"

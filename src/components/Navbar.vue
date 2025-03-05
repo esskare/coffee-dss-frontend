@@ -1,12 +1,12 @@
 <template>
-  <div class="h-screen bg-custom-grey text-white transition-all duration-200 md:relative z-50 shadow-lg flex flex-col"
+  <div class="h-screen bg-custom-grey text-white transition-all duration-200 md:relative z-50 shadow-lg flex flex-col flex-shrink-0"
        :class="[
          isMobile ? (isNavOpen ? 'w-48 fixed top-0 left-0 bottom-0' : 'w-0 fixed top-0 left-0 bottom-0') : (isNavOpen ? 'w-48 md:w-1/6 fixed' : 'w-16 md:fixed')
        ]">
 
     <!-- Mobile Hamburger Button -->
     <button v-if="isMobile" @click="handleToggle" class="absolute top-4 left-4 p-2 rounded-md bg-primary-800-main text-white z-60">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24  " stroke="currentColor">
         <path v-if="!isNavOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
