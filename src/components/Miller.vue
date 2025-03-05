@@ -1,6 +1,8 @@
 <template>
-  <div class="w-full max-w-2xl mx-auto">
-    <!-- Tabs Navigation -->
+  <div class="flex flex-col md:flex-row h-screen w-full overflow-hidden">
+    <Navigation :is-nav-open="isNavOpen" @toggle="toggleNav" />
+    <Header/>
+<!--    &lt;!&ndash; Tabs Navigation &ndash;&gt;
     <div class="flex space-x-2 border-b pb-2">
       <button
         v-for="(tab, index) in tabs"
@@ -13,25 +15,45 @@
       </button>
     </div>
 
-    <!-- Tab Content -->
+    &lt;!&ndash; Tab Content &ndash;&gt;
     <div class="mt-4 p-4 border rounded-lg bg-white shadow">
-<!--      <p>{{ tabs[activeTab].content }}</p>-->
+&lt;!&ndash;      <p>{{ tabs[activeTab].content }}</p>&ndash;&gt;
       <DataTable/>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue'
 import DataTable from '@/components/DataTable.vue'
-import DataTableDashboard from '@/components/DataTableDashboard.vue'
+import Navigation from '@/components/Navbar.vue'
+import Header from '@/components/Header.vue'
 
 const tabs = ref([
   { label: "Home", content: "This is the Home tab content." },
   { label: "Profile", content: "This is the Profile tab content." },
   { label: "Settings", content: "This is the Settings tab content." },
+
 ]);
 
 const activeTab = ref(0);
+
+// Navigation state management - default to false (closed on mobile)
+const isNavOpen = ref(false);
+
+// Set initial state on mount
+onMounted(() => {
+  // Initialize nav to open on desktop, closed on mobile
+  isNavOpen.value = window.innerWidth >= 768;
+});
+
+// Toggle navigation function
+const toggleNav = () => {
+  console.log("App - ", isNavOpen.value)
+  isNavOpen.value = !isNavOpen.value;
+};
 </script>
 
+<style>
+@import "datatables.net-dt/css/dataTables.dataTables.min.css"; /* Ensure DataTable styling */
+</style>

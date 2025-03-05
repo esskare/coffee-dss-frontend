@@ -3,8 +3,7 @@
     <Navigation />
     <div class="flex-grow overflow-hidden flex flex-col">
       <Header class="z-40"/>
-      <Warehouse/>
-      <!-- You can add main content area here later -->
+      <DataTable/>
     </div>
   </div>
 </template>
@@ -12,6 +11,5 @@
 <script setup>
 import Navigation from '@/components/Navbar.vue'
 import Header from '@/components/Header.vue'
-import MainContent from '@/components/MainContent.vue'
-import Warehouse from '@/components/Warehouse.vue'
+import DataTable from '@/components/DataTable.vue'
 </script>

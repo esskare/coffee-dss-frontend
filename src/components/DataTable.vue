@@ -1,48 +1,50 @@
 <template>
-  <div class="container mx-auto p-4">
-    <table id="myTable" class="display w-full border border-gray-300 rounded-lg shadow-md">
-      <thead>
-      <tr class="bg-gray-200">
-        <th class="p-2">Name</th>
-        <th class="p-2">Age</th>
-        <th class="p-2">Email</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(user, index) in users" :key="index">
-        <td class="p-2">{{ user.name }}</td>
-        <td class="p-2">{{ user.age }}</td>
-        <td class="p-2">{{ user.email }}</td>
-      </tr>
-      </tbody>
-    </table>
+  <div class="w-full h-screen overflow-auto p-2">
+    <table ref="dataTable" class="display w-full border rounded-lg"></table>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import $ from 'jquery';
-import 'datatables.net';
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import $ from "jquery";
+import "datatables.net-dt";
 
-const users = ref([
-  { name: 'Alice', age: 25, email: 'alice@example.com' },
-  { name: 'Bob', age: 30, email: 'bob@example.com' },
-  { name: 'Charlie', age: 35, email: 'charlie@example.com' },
-]);
+const dataTable = ref(null);
+let tableInstance = null;
 
-let dataTableInstance;
+const columns = [
+  { title: "ID", data: "id" },
+  { title: "Name", data: "name" },
+  { title: "Age", data: "age" },
+  { title: "Country", data: "country" },
+];
+
+const data = [
+  { id: 1, name: "John Doe", age: 30, country: "USA" },
+  { id: 2, name: "Jane Smith", age: 25, country: "Canada" },
+  { id: 3, name: "Ali Khan", age: 35, country: "Pakistan" },
+  { id: 3, name: "Ali Khan", age: 35, country: "Pakistan" },
+  { id: 3, name: "Ali Khan", age: 35, country: "Pakistan" },
+  { id: 3, name: "Ali Khan", age: 35, country: "Pakistan" },
+];
 
 onMounted(() => {
-  dataTableInstance = $('#myTable').DataTable();
+  tableInstance = $(dataTable.value).DataTable({
+    data,
+    columns,
+    responsive: true,
+    paging: true,
+    searching: true,
+    ordering: true,
+    lengthChange: false,
+    pageLength: 5,
+    dom: "Bfrtip", // Enables buttons (optional)
+  });
 });
 
-onUnmounted(() => {
-  if (dataTableInstance) {
-    dataTableInstance.destroy();
+onBeforeUnmount(() => {
+  if (tableInstance) {
+    tableInstance.destroy();
   }
 });
 </script>
-
-<style>
-/* Tailwind already applies some styling, but you can customize further */
-</style>

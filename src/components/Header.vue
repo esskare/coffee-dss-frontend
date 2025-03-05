@@ -1,14 +1,15 @@
 <template>
-  <div class="w-full dark:bg-gray-800">
-    <div class="flex flex-col md:flex-row items-center justify-between py-3">
+  <div class="w-full dark:bg-gray-800 px-3 py-1 md:static">
+    <div class="flex flex-col md:flex-row items-center justify-between py-3 relative">
       <!-- Search Box -->
-      <div class="relative w-full md:w-auto mb-2 md:mb-0">
-      <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-        <span><VsxIcon :iconName="'SearchNormal1'" size="18" type="linear" /></span>
-      </span>
+<!--      <div class="relative md:w-auto mb-2 md:mb-0 sm:ml-14 md:ml-0">-->
+      <div class="relative md:w-auto mb-2 md:mb-0 sm:ml-14 md:ml-0 sm:w-auto sm:max-w-[calc(100%-4rem)]">
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+          <span><VsxIcon :iconName="'SearchNormal1'" size="18" type="linear" /></span>
+        </span>
         <input
           type="text"
-          placeholder="Search"
+          placeholder="Searcheee"
           class="w-full md:w-96 pl-10 pr-4 py-2 border-2 border-gray-300 rounded-lg text-gray-100 focus:outline-none focus:ring-1 text-sm focus:ring-gray-300"
         />
       </div>
@@ -19,10 +20,8 @@
           <span class="font-bold">Take a Tour</span>
           <span><VsxIcon :iconName="'VideoSquare'" size="18" type="linear" /></span>
         </button>
-
         <span class="cursor-pointer"><VsxIcon :iconName="'Notification1'" size="18" type="linear" /></span>
 
-        <!-- Profile Section -->
         <!-- Profile Section -->
         <div class="relative">
           <button class="flex items-center space-x-2 focus:outline-none">

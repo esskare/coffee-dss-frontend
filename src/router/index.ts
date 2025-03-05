@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Home from '../views/Home.vue'
 import Login from '@/components/Login.vue'
-// import Miller from '../components/Miller.vue'
+import Miller from '../components/Miller.vue'
+import Broker from '@/components/Broker.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,11 +18,16 @@ const router = createRouter({
       name: 'dashboard',
       component: Home,
     },
-    // {
-    //   path: '/miller',
-    //   name: 'miller',
-    //   component: Miller,
-    // },
+    {
+      path: '/miller',
+      name: 'miller',
+      component: Miller,
+    },
+    {
+      path: '/broker',
+      name: 'broker',
+      component: Broker,
+    },
     // {
     //   path: '/login',
     //   name: 'login',
@@ -35,14 +41,14 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
     },
-    {
-      path: '/login',
-      name: 'login',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../components/Login.vue'),
-    },
+    // {
+    //   path: '/login',
+    //   name: 'login',
+    //   // route level code-splitting
+    //   // this generates a separate chunk (About.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () => import('../components/Login.vue'),
+    // },
   ],
 })
 
