@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import Card from '@/components/views/layout/Card.vue'
+import Card from '@/components/views/ui/Card.vue'
 
 defineProps({
   title: {

@@ -3,7 +3,7 @@
     <Navbar class="w-16 md:w-1/6 flex-shrink-0" />
     <div class="flex-grow overflow-y-auto flex flex-col">
       <Header class="z-40"/>
-      <div class="flex flex-col md:flex-row">
+      <div class="flex flex-col md:flex-row overflow-hidden">
         <slot />
       </div>
       <!-- You can add main content area here later -->

@@ -4,12 +4,14 @@
     <MainContent :is-nav-open="isNavOpen" @toggle="toggleNav" />-->
 <!--    <Login/>-->
 <!--    <Miller/>-->
+    <Toast ref="toastRef" />
     <RouterView/>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, provide } from 'vue';
+import Toast from '@/components/views/ui/Toast.vue'
 
 // Navigation state management - default to false (closed on mobile)
 const isNavOpen = ref(false);
@@ -25,4 +27,7 @@ const toggleNav = () => {
   console.log("App - ", isNavOpen.value)
   isNavOpen.value = !isNavOpen.value;
 };
+
+const toastRef = ref(null);
+provide("toast", toastRef); // 👈 Makes toast available globally
 </script>

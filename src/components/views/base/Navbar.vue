@@ -76,7 +76,7 @@
         <!-- Settings Link -->
         <li>
           <router-link
-            to="/test1"
+            to="/Settings"
             class="hover:bg-primary-800-main cursor-pointer transition-colors duration-400 text-primary-500-neutral hover:text-white rounded-md group p-2 flex items-center">
             <VsxIcon iconName="Settings" size="15" type="linear" />
             <span v-if="isNavOpen" class="whitespace-nowrap text-sm duration-100 px-2">Settings</span>
@@ -102,6 +102,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { VsxIcon } from "vue-iconsax";
+import router from '@/router/index.js'
 
 const isNavOpen = ref(false);
 const isMobile = ref(false);

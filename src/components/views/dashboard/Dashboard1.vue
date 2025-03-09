@@ -19,5 +19,5 @@
 
 import BaseLayout from '@/components/views/base/BaseLayout.vue'
 import Sidebar from '@/components/views/dashboard/Sidebar.vue'
-import Greetings from '@/components/views/dashboard//Greetings.vue'
+import Greetings from '@/components/views/dashboard/Greetings.vue'
 </script>

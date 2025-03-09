@@ -14,6 +14,7 @@ export default {
       },
       colors:{
         'secondary-400-main':'#85B654',
+        'primary-500-main':'#3C8D69',
         'primary-800-main':'#1E4938',
         'primary-500-neutral':'#222222',
         'accent-pastel-green':'#E7F9F5',
@@ -21,7 +22,9 @@ export default {
         'accent-pastel-violet':'#F7EBFD',
         'accent-pastel-violet1':'#F7EBFD',
         'custom-grey':'#F7F7F7',
-        'custom-grey2':'#E7E7E7'
+        'custom-grey2':'#E7E7E7',
+        'custom-grey3':'#FDFDFD',
+        'custom-grey4':'#F8F8F8'
       },
       margin: {
         '1/10': '10%',

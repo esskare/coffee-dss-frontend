@@ -1,10 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import Home from '@/components/views/dashboard/Home.vue'
-import Login from '@/components/views/auxilliary/Login.vue'
-import Test1 from '@/components/Test1.vue'
-import Test2 from '@/components/Test2.vue'
-import Test3 from '@/components/Test3.vue'
+import Login from '@/components/views/auth/Login.vue'
+import ForgotPassword from '@/components/views/auth/ForgotPassword.vue'
+import Dashboard1 from '@/components/views/dashboard/Dashboard1.vue'
+import Dashboard2 from '@/components/views/dashboard/Dashboard2.vue'
+import Dashboard3 from '@/components/views/dashboard/Dashboard3.vue'
+import Settings from '@/components/Settings.vue'
+import Stepper from '@/components/views/ui/Stepper.vue'
+import Test from '@/components/views/pages/Test.vue'
+import RegisterFarmer from '@/components/views/pages/RegisterFarmer.vue'
+import Report from '@/components/views/pages/Report.vue'
+import DataTable from '@/components/views/ui/DataTable.vue'
+import DataTableDashboard from '@/components/views/dashboard/DataTableDashboard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +22,11 @@ const router = createRouter({
       component: Login,
     },
     {
+      path: '/ForgotPassword',
+      name: 'ForgotPassword',
+      component: ForgotPassword,
+    },
+    {
       path: '/dashboard',
       name: 'dashboard',
       component: Home,
@@ -22,40 +34,41 @@ const router = createRouter({
     {
       path: '/test1',
       name: 'test1',
-      component: Test1,
+      meta: { requiresAuth: true },
+      component: Dashboard1,
     },
     {
       path: '/test2',
       name: 'test2',
-      component: Test2,
+      component: Dashboard2,
     },
     {
       path: '/test3',
       name: 'test3',
-      component: Test3,
+      component: Dashboard3,
     },
     // {
-    //   path: '/login',
-    //   name: 'login',
-    //   component: LoginView,
+    //   path: '/test',
+    //   name: 'test',
+    //   component: Test,
     // },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      path: '/Settings',
+      name: 'settings',
+      component: Dashboard3,
     },
-    // {
-    //   path: '/login',
-    //   name: 'login',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../components/Login.vue'),
-    // },
   ],
 })
+
+// Navigation guard to check auth status
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = !!localStorage.getItem('token');
+
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next('/');
+  } else {
+    next();
+  }
+});
 
 export default router

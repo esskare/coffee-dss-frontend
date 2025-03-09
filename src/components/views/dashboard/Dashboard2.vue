@@ -23,7 +23,7 @@
 
 import BaseLayout from '@/components/views/base/BaseLayout.vue'
 import Sidebar from '@/components/views/dashboard/Sidebar.vue'
-import Greetings from '@/components/views/dashboard//Greetings.vue'
-import DataTableDashboard from '@/components/views/dashboard//DataTableDashboard.vue'
-import DashboardMetrics from '@/components/views/dashboard//DashboardMetrics.vue'
+import Greetings from '@/components/views/dashboard/Greetings.vue'
+import DataTableDashboard from '@/components/views/dashboard/DataTableDashboard.vue'
+import DashboardMetrics from '@/components/views/dashboard/DashboardMetrics.vue'
 </script>

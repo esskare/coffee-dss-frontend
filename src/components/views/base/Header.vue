@@ -9,7 +9,7 @@
         </span>
         <input
           type="text"
-          placeholder="Searcheee"
+          placeholder="Search"
           class="w-full md:w-96 pl-10 pr-4 py-2 border-2 border-gray-300 rounded-lg text-gray-100 focus:outline-none focus:ring-1 text-sm focus:ring-gray-300"
         />
       </div>
