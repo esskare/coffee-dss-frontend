@@ -12,6 +12,7 @@ import RegisterFarmer from '@/components/views/pages/RegisterFarmer.vue'
 import Report from '@/components/views/pages/Report.vue'
 import DataTable from '@/components/views/ui/DataTable.vue'
 import DataTableDashboard from '@/components/views/dashboard/DataTableDashboard.vue'
+import Dashboard4 from '@/components/views/dashboard/Dashboard4.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,9 +49,9 @@ const router = createRouter({
       component: Dashboard3,
     },
     {
-      path: '/test3',
-      name: 'test3',
-      component: Dashboard3,
+      path: '/test5',
+      name: 'test5',
+      component: Dashboard4,
     },
     // {
     //   path: '/test',
