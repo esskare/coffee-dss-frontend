@@ -3,8 +3,8 @@
   <BaseLayout>
     <div class="w-full bg-white p-2">
 <!--      <Stepper/>-->
-      <RegisterFarmer/>
-<!--      <DataTable/>-->
+<!--      <RegisterFarmer/>-->
+      <DataTable/>
     </div>
   </BaseLayout>
 </template>

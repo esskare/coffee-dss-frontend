@@ -29,7 +29,7 @@
             <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
             <input
               type="text"
-              v-model="formData.email"
+              v-model="formData.username"
               placeholder="Enter your email"
               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             />
@@ -90,14 +90,16 @@ const formData = ref({
 const handleLogin = async () => {
   try {
     console.log('Form Data:', formData.value); // Check the dynamic values
-    const response = await api.post('/api/sca/v1/auth/authenticate',formData.value);
+    const response = await api.post('/api/token/generate-token',formData.value);
     console.log("response - ", response)
     // toastRef.value("Login successful!", "success");
-    toast.value?.showToast("Login successful!", "success")
-    if (response.access_token) {
-      localStorage.setItem('token', response.access_token); // Save JWT token
+
+    if (response.token) {
+      toast.value?.showToast("Login successful!", "success")
+      localStorage.setItem('token', response.token); // Save JWT token
       router.push('/dashboard'); // Redirect after login
     } else {
+      toast.value?.showToast("Login failed!", "error")
      // errorMessage.value = 'Invalid login credentials';
     }
   } catch (error) {
