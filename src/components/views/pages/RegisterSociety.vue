@@ -116,7 +116,7 @@
           <div v-if="currentStep === 1" class="space-y-4">
             <div>
 
-              
+
               <input
                 id="growerCode"
                 v-model="formData.growerCode"
@@ -133,6 +133,7 @@
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Transport Charge </label>
                 <input
+                  id="transportfees"
                   v-model="formData.transportfees"
                   type="text"
                   placeholder="Storage fees"
@@ -142,13 +143,14 @@
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1"> Parchment Transport Charge</label>
                 <input
+                  id="parchmentcharges"
                   v-model="formData.parchmentcharges"
                   type="text"
                   placeholder="Enter parchment transport charge"
                   class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
-             
+
             </div>
           </div>
 
@@ -328,12 +330,8 @@ const validateStep = () => {
       }
       break
     case 2:
-      if (
-        !formData.value.transportfees.trim() ||
-        !formData.value.parchmentchargesr.trim()
-       
-      ) {
-        errorMessage.value = 'All fields are required.'
+      if (!formData.value.transportfees.trim() || !formData.value.parchmentcharges.trim()) {
+        errorMessage.value = 'Transport Fees and Parchment Charges are required.'
         return false
       }
       break
@@ -348,7 +346,7 @@ const validateStep = () => {
         return false
       }
       break
-   
+
   }
 
   return true
@@ -365,7 +363,7 @@ const goToNextStep = async () => {
     // await fetchFarmerDetails()
 
 
-   
+
   }
 
   if (currentStep.value < steps.length) {
