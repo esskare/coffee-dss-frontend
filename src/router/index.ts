@@ -35,7 +35,7 @@ const router = createRouter({
     {
       path: '/test1',
       name: 'test1',
-      meta: { requiresAuth: true },
+     // meta: { requiresAuth: true },
       component: Dashboard1,
     },
     {

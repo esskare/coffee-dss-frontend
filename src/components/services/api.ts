@@ -3,6 +3,7 @@ import axios from 'axios';
 // Create an Axios instance
 const apiClient = axios.create({
   // baseURL: 'http://localhost:7066', // Change to your actual API base URL
+  // baseURL: 'http://localhost:8083', // Change to your actual API base URL
   baseURL: 'https://coffeetradetest.co-opbank.co.ke', // Change to your actual API base URL
   headers: {
     'Content-Type': 'application/json',
