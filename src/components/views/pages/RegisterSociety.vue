@@ -114,7 +114,9 @@
         <div class="mb-8 md:mb-12">
           <!-- Step 1: Grower Code Form -->
           <div v-if="currentStep === 1" class="space-y-4">
-            <div> 
+            <div>
+
+              
               <input
                 id="growerCode"
                 v-model="formData.growerCode"
@@ -149,39 +151,89 @@
              
             </div>
           </div>
-        
-      <!-- Step 3: Contract Details -->
-<div v-if="currentStep === 3" class="card">
-  <Toast />
-  <FileUpload 
-    name="demo[]" 
-    url="/api/upload" 
-    @upload="onTemplatedUpload($event)" 
-    :multiple="true" 
-    accept="image/*,application/pdf" 
-    :maxFileSize="1000000" 
-    @select="onSelectedFiles"
-  >
-    <template #header="{ chooseCallback, uploadCallback, clearCallback, files }">
-      <div class="flex flex-wrap justify-between items-center flex-1 gap-4">
-        <div class="flex gap-2">
-          <Button @click="chooseCallback()" icon="pi pi-images" rounded outlined severity="secondary"></Button>
-          <Button @click="uploadCallback" icon="pi pi-cloud-upload" rounded outlined severity="success" :disabled="!files || files.length === 0"></Button>
-          <Button @click="clearCallback()" icon="pi pi-times" rounded outlined severity="danger" :disabled="!files || files.length === 0"></Button>
-        </div>
-        <ProgressBar :value="totalSizePercent" :showValue="false" class="md:w-20rem h-1 w-full md:ml-auto">
-          <span class="whitespace-nowrap">{{ totalSize }}B / 1Mb</span>
-        </ProgressBar>
-      </div>
-    </template>
-  </FileUpload>
 
-     <!-- Error Message if No File Uploaded -->
-  <div v-if="!fileUploaded && showFileError" class="text-red-600 text-sm mt-2">
-    Please upload a file before proceeding.
-  </div> 
-</div>
+          <!-- Step 3: Farm Details -->
+          <div v-if="currentStep === 3" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Farm Name</label>
+                <input
+                  v-model="formData.farmName"
+                  type="text"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Farm Size (Hectares)</label>
+                <input
+                  v-model="formData.farmSize"
+                  type="number"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Primary Crop</label>
+                <select
+                  v-model="formData.primaryCrop"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                >
+                  <option value="">Select a crop</option>
+                  <option value="corn">Corn</option>
+                  <option value="wheat">Wheat</option>
+                  <option value="rice">Rice</option>
+                  <option value="coffee">Coffee</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Farm Location</label>
+                <input
+                  v-model="formData.farmLocation"
+                  type="text"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+            </div>
+          </div>
 
+          <!-- Step 4: Payment Details -->
+          <div v-if="currentStep === 4" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Bank Name</label>
+                <input
+                  v-model="formData.bankName"
+                  type="text"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Account Number</label>
+                <input
+                  v-model="formData.accountNumber"
+                  type="text"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Payment Method</label>
+                <select
+                  v-model="formData.paymentMethod"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                >
+                  <option value="">Select payment method</option>
+                  <option value="bank">Bank Transfer</option>
+                  <option value="mobile">Mobile Money</option>
+                  <option value="cash">Cash</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Tax ID</label>
+                <input
+                  v-model="formData.taxId"
+                  type="text"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -205,6 +257,8 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -225,15 +279,11 @@ const steps = [
   {
     category: 'Contract',
     title: 'Upload Contract',
-    description: "Upload the signed contract document"
+    description: "Add the following charges per bag as agreed with the grower"
   }
 ]
 
-
-const fileUploaded = ref(null) 
-
 // Form state
-
 const currentStep = ref(1)
 const formData = ref({
   // Step 1
@@ -242,9 +292,13 @@ const formData = ref({
   // Step 2
   transportfees: '',
   parchmentcharges: '',
-  // step 3
-  file: null,
 
+
+  // Step 3
+  farmName: '',
+  farmSize: null,
+  primaryCrop: '',
+  farmLocation: '',
 
 })
 
@@ -277,26 +331,27 @@ const validateStep = () => {
       if (
         !formData.value.transportfees.trim() ||
         !formData.value.parchmentchargesr.trim()
+       
       ) {
         errorMessage.value = 'All fields are required.'
         return false
       }
       break
-      case 3:
-      if (!fileUploaded.value) { // Check if file is uploaded
-        errorMessage.value = 'Please upload a file before proceeding.'
+    case 3:
+      if (
+        !formData.value.farmName.trim() ||
+        !formData.value.farmSize ||
+        !formData.value.primaryCrop.trim() ||
+        !formData.value.farmLocation.trim()
+      ) {
+        errorMessage.value = 'All fields are required.'
         return false
       }
       break
-
+   
   }
 
   return true
-}
-
-const onFileUpload = (event) => {
-  uploadedFiles.value = event.files
-  console.log("Uploaded files:", uploadedFiles.value)
 }
 
 const goToNextStep = async () => {
@@ -304,16 +359,21 @@ const goToNextStep = async () => {
     return // Stop if validation fails
   }
 
-  // Ensure a file is uploaded before progressing past step 3
-  if (currentStep.value === 3 && uploadedFiles.value.length === 0) {
-    alert("Please upload at least one file before proceeding.")
-    return
+  if (currentStep.value === 1) {
+    // In a real app, you would fetch farmer details based on ID
+    // and pre-populate the formData
+    // await fetchFarmerDetails()
+
+
+   
   }
 
   if (currentStep.value < steps.length) {
     currentStep.value++
-    window.scrollTo(0, 0) // Scroll to top when changing steps
+    // Scroll to top when changing steps
+    window.scrollTo(0, 0)
   } else {
+    // Submit the form
     console.log(formData.value)
     alert('Form submitted!')
     // handleSubmit()
