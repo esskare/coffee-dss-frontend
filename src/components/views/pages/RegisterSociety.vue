@@ -71,7 +71,7 @@
         <div class="flex justify-between items-center">
           <h1 class="text-xl md:text-base font-bold">Onboard New Society </h1>
           <button
-            class="flex items-center gap-2 px-3 py-1 md:px-4 md:py-2 rounded-full bg-red-100 text-red-500 hover:bg-red-500"
+            class="flex items-center gap-2 px-3 py-1 md:px-4 md:py-2 rounded-full bg-red-100 text-red-500 hover:bg-red-200"
           >
             <span class="hidden md:inline">Close</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -153,92 +153,37 @@
 
             </div>
           </div>
-
-          <!-- Step 3: Farm Details -->
-          <div v-if="currentStep === 3" class="space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Farm Name</label>
-                <input
-                  v-model="formData.farmName"
-                  type="text"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Farm Size (Hectares)</label>
-                <input
-                  v-model="formData.farmSize"
-                  type="number"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Primary Crop</label>
-                <select
-                  v-model="formData.primaryCrop"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                >
-                  <option value="">Select a crop</option>
-                  <option value="corn">Corn</option>
-                  <option value="wheat">Wheat</option>
-                  <option value="rice">Rice</option>
-                  <option value="coffee">Coffee</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Farm Location</label>
-                <input
-                  v-model="formData.farmLocation"
-                  type="text"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 4: Payment Details -->
-          <div v-if="currentStep === 4" class="space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Bank Name</label>
-                <input
-                  v-model="formData.bankName"
-                  type="text"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Account Number</label>
-                <input
-                  v-model="formData.accountNumber"
-                  type="text"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Payment Method</label>
-                <select
-                  v-model="formData.paymentMethod"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                >
-                  <option value="">Select payment method</option>
-                  <option value="bank">Bank Transfer</option>
-                  <option value="mobile">Mobile Money</option>
-                  <option value="cash">Cash</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Tax ID</label>
-                <input
-                  v-model="formData.taxId"
-                  type="text"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-            </div>
-          </div>
         </div>
+<!-- Step 3: File Upload -->
+<div v-if="currentStep === 3" class="space-y-4">
+  <label class="block text-sm font-medium text-gray-700 mb-1">Upload Files</label>
+
+  <div class="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center">
+    <input
+      type="file"
+      multiple
+      @change="handleFileUpload"
+      class="hidden"
+      ref="fileInput"
+    />
+    <button
+      @click="$refs.fileInput.click()"
+      class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+    >
+      Select Files
+    </button>
+
+    <div v-if="uploadedFiles.length" class="mt-4 space-y-2">
+      <div v-for="(file, index) in uploadedFiles" :key="index" class="flex items-center justify-between bg-gray-100 p-2 rounded">
+        <span class="text-sm text-gray-700">{{ file.name }}</span>
+        <button @click="removeFile(index)" class="text-red-500 hover:text-red-700">Remove</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+     
 
         <!-- Step navigation buttons -->
         <div class="flex justify-between bottom-0 bg-custom-grey3 py-4 pb-32">
@@ -271,7 +216,7 @@ const steps = [
   {
     category: 'Society Details',
     title: 'Grower Code',
-    description: "Enter the society’s grower code to automatically get their details"
+    description: "Enter the society’sf grower code to automatically get their details"
   },
   {
     category: 'Contract Details',
@@ -281,7 +226,7 @@ const steps = [
   {
     category: 'Contract',
     title: 'Upload Contract',
-    description: "Add the following charges per bag as agreed with the grower"
+    description: "Upload the signed contract document"
   }
 ]
 
@@ -297,10 +242,7 @@ const formData = ref({
 
 
   // Step 3
-  farmName: '',
-  farmSize: null,
-  primaryCrop: '',
-  farmLocation: '',
+  uploadedFiles: [],
 
 })
 
@@ -331,21 +273,16 @@ const validateStep = () => {
       break
     case 2:
       if (!formData.value.transportfees.trim() || !formData.value.parchmentcharges.trim()) {
-        errorMessage.value = 'Transport Fees and Parchment Charges are required.'
-        return false
-      }
-      break
-    case 3:
-      if (
-        !formData.value.farmName.trim() ||
-        !formData.value.farmSize ||
-        !formData.value.primaryCrop.trim() ||
-        !formData.value.farmLocation.trim()
-      ) {
         errorMessage.value = 'All fields are required.'
         return false
       }
       break
+      case 3:
+  if (formData.value.uploadedFiles.length === 0) {
+    errorMessage.value = 'File upload is required.';
+    return false;
+  }
+  break
 
   }
 
@@ -385,4 +322,13 @@ const goToPreviousStep = () => {
     window.scrollTo(0, 0)
   }
 }
+const uploadedFiles = ref([]);
+
+const handleFileUpload = (event) => {
+  uploadedFiles.value = Array.from(event.target.files);
+};
+
+const removeFile = (index) => {
+  uploadedFiles.value.splice(index, 1);
+};
 </script>
