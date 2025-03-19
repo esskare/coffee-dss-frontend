@@ -99,7 +99,7 @@ const handleLogin = async () => {
       localStorage.setItem('token', response.token); // Save JWT token
       router.push('/dashboard'); // Redirect after login
     } else {
-      toast.value?.showToast("Login failed!", "error")
+      toast.value?.showToast("Invalid Username and Password!", "error")
      // errorMessage.value = 'Invalid login credentials';
     }
   } catch (error) {
