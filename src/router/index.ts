@@ -10,11 +10,13 @@ import Stepper from '@/components/views/ui/Stepper.vue'
 import Test from '@/components/views/pages/Test.vue'
 import RegisterFarmer from '@/components/views/pages/RegisterFarmer.vue'
 import RegisterSociety from '@/components/views/pages/RegisterSociety.vue'
+import CoffeeDelivery from '@/components/views/pages/CoffeeDelivery.vue'
 import Report from '@/components/views/pages/Report.vue'
 import DataTable from '@/components/views/ui/DataTable.vue'
 import DataTableDashboard from '@/components/views/dashboard/DataTableDashboard.vue'
 import Dashboard4 from '@/components/views/dashboard/Dashboard4.vue'
 import DashboardW from '@/components/views/dashboard/DashboardW.vue'
+import DashboardC from '@/components/views/dashboard/DashboardC.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -50,6 +52,13 @@ const router = createRouter({
       name: 'societydetails',
       component: DashboardW,
     },
+
+    {
+      path:'/coffeedelivery',
+      name: 'coffeedelivery',
+      component: DashboardC,
+    },
+
     {
       path: '/test4',
       name: 'test4',
