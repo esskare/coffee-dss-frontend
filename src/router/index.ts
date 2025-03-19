@@ -9,11 +9,12 @@ import Settings from '@/components/Settings.vue'
 import Stepper from '@/components/views/ui/Stepper.vue'
 import Test from '@/components/views/pages/Test.vue'
 import RegisterFarmer from '@/components/views/pages/RegisterFarmer.vue'
+import RegisterSociety from '@/components/views/pages/RegisterSociety.vue'
 import Report from '@/components/views/pages/Report.vue'
 import DataTable from '@/components/views/ui/DataTable.vue'
 import DataTableDashboard from '@/components/views/dashboard/DataTableDashboard.vue'
 import Dashboard4 from '@/components/views/dashboard/Dashboard4.vue'
-
+import DashboardW from '@/components/views/dashboard/DashboardW.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -42,6 +43,12 @@ const router = createRouter({
       path: '/farmerdetails',
       name: 'test2',
       component: Test,
+    },
+
+    {
+      path:'/societydetails',
+      name: 'societydetails',
+      component: DashboardW,
     },
     {
       path: '/test4',
