@@ -1,6 +1,6 @@
 <!-- Dashboard.vue -->
 <template>
-    <BaseLayout>
+    <BaseW>
       <div class="w-full bg-white p-2">
   <!--      <Stepper/>-->
        
@@ -9,12 +9,12 @@
   
   <!--      <DataTable/>-->
       </div>
-    </BaseLayout>
+    </BaseW>
   </template>
   
   <script setup lang="ts">
   
-  import BaseLayout from '@/components/views/base/BaseLayout.vue'
+  import BaseW from '@/components/views/base/BaseW.vue'
   import Stepper from '@/components/views/ui/Stepper.vue'
   import RegisterSociety from '@/components/views/pages/RegisterSociety.vue'
   import DataTable from '@/components/views/ui/DataTable.vue'

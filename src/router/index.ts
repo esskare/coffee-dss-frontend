@@ -17,6 +17,8 @@ import DataTableDashboard from '@/components/views/dashboard/DataTableDashboard.
 import Dashboard4 from '@/components/views/dashboard/Dashboard4.vue'
 import DashboardW from '@/components/views/dashboard/DashboardW.vue'
 import DashboardC from '@/components/views/dashboard/DashboardC.vue'
+import Whomepage from '@/components/views/pages/Whomepage.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -26,7 +28,12 @@ const router = createRouter({
       component: Login,
     },
     {
-      path: '/ForgotPassword',
+      path: '/warehouse',
+      name: 'Whomepage',
+      component: Whomepage,
+    },
+    {
+      path: '/forgotPassword',
       name: 'ForgotPassword',
       component: ForgotPassword,
     },

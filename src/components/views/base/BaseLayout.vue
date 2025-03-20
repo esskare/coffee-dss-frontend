@@ -13,5 +13,6 @@
 
 <script setup>
 import Navbar from '@/components/views/base/Navbar.vue'
+import WNavbar from '@/components/views/base/WNavbar.vue';
 import Header from '@/components/views/base/Header.vue'
 </script>

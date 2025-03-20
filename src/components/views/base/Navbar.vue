@@ -111,7 +111,7 @@ const navItems = ref([
   { name: 'Dashboard', icon: 'Home', isOpen: false, route: '/dashboard', children: [] },
   { name: 'Farmer', icon: 'People', isOpen: false, children: [{ name: 'Onboard', route: '/test4'}, { name: 'View', route: '/test4' }] },
   { name: 'Miller', icon: 'Coffee', isOpen: false, children: [{ name: 'Upload' }, { name: 'View', route: '/test5' }] },
-  { name: 'Warehouse', icon: 'UserAdd', isOpen: false, children: [{ name: 'Upload', route:'/societydetails' }, { name: 'View' }] },
+  { name: 'Warehouse', icon: 'UserAdd', isOpen: false, children: [{ name: 'Upload', route:'/societydetails' }, { name: 'View', route:'/Whomepage' }] },
   { name: 'Broker', icon: 'Paperclip2', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
   { name: 'NCE', icon: 'Verify', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
   { name: 'Payments', icon: 'Wallet', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] }

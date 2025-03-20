@@ -71,7 +71,7 @@
         <div class="flex justify-between items-center">
           <h1 class="text-xl md:text-base font-bold">Coffee Collection</h1>
           <button
-            class="flex items-center gap-2 px-3 py-1 md:px-4 md:py-2 rounded-full bg-red-100 text-red-500 hover:bg-red-500"
+            class="flex items-center gap-2 px-3 py-1 md:px-4 md:py-2 rounded-full bg-red-100 text-red-500 hover:bg-red-200"
           >
             <span class="hidden md:inline">Close</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -112,31 +112,34 @@
 
         <!-- Step form fields -->
         <div class="mb-8 md:mb-12">
-          <!-- Step 1: Coffee Form -->
+          <!-- Step 1: Member Form -->
           <div v-if="currentStep === 1" class="space-y-4">
             <div>
+
+              <label for="memberNumber" class="block text-sm font-sm text-gray-700 mb-1">Enter the farmer’s member number</label>
               <input
-                id="coffee"
-                v-model="formData.coffee"
+                id="memberNumber"
+                v-model="formData.memberNumber"
                 type="text"
-                placeholder="Enter Weight"
+                placeholder="Enter Member Number"
                 class="w-full border border-gray-300 font-sm text-sm rounded-md px-2 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
           </div>
 
-          <!-- Step 2: Confirm Coffee Details -->
+          <!-- Step 2: Confirm Personal Details -->
           <div v-if="currentStep === 2" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Weight </label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Enter the weight delivered in Kgs </label>
                 <input
                   v-model="formData.weight"
                   type="text"
+                  placeholder="Enter Weight"
                   class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
-            
+             
             </div>
           </div>
         </div>
@@ -170,26 +173,27 @@ import { ref, computed } from 'vue'
 // Step configuration
 const steps = [
   {
-    category: 'Member Details',
-    title: 'Enter Weight Delivered',
-    description: "Enter the weight Delivered in Kgs"
+    category: 'Mmember Details',
+    title: 'Member Number',
   },
   {
     category: 'Delivery',
     title: 'Weight Delivered',
-    
-  }
+  },
+  
 ]
 
 // Form state
 const currentStep = ref(1)
 const formData = ref({
   // Step 1
-  coffee: '',
+  memberNumber: '',
 
   // Step 2
-  weight: '',
-  
+  fullName: '',
+  phoneNumber: '',
+  email: '',
+  address: '',
 
 })
 
@@ -213,8 +217,8 @@ const validateStep = () => {
 
   switch (currentStep.value) {
     case 1:
-      if (!formData.value.coffee.trim()) {
-        errorMessage.value = 'Weight is required.'
+      if (!formData.value.memberNumber.trim()) {
+        errorMessage.value = 'Member Number is required.'
         return false
       }
       break
@@ -224,6 +228,28 @@ const validateStep = () => {
         !formData.value.phoneNumber.trim() ||
         !formData.value.email.trim() ||
         !formData.value.address.trim()
+      ) {
+        errorMessage.value = 'All fields are required.'
+        return false
+      }
+      break
+    case 3:
+      if (
+        !formData.value.farmName.trim() ||
+        !formData.value.farmSize ||
+        !formData.value.primaryCrop.trim() ||
+        !formData.value.farmLocation.trim()
+      ) {
+        errorMessage.value = 'All fields are required.'
+        return false
+      }
+      break
+    case 4:
+      if (
+        !formData.value.bankName.trim() ||
+        !formData.value.accountNumber.trim() ||
+        !formData.value.paymentMethod.trim() ||
+        !formData.value.taxId.trim()
       ) {
         errorMessage.value = 'All fields are required.'
         return false
@@ -243,7 +269,6 @@ const goToNextStep = async () => {
     // In a real app, you would fetch farmer details based on ID
     // and pre-populate the formData
     // await fetchFarmerDetails()
-
   }
 
   if (currentStep.value < steps.length) {
