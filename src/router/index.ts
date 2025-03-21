@@ -5,10 +5,8 @@ import ForgotPassword from '@/components/views/auth/ForgotPassword.vue'
 import Dashboard1 from '@/components/views/dashboard/Dashboard1.vue'
 import Dashboard2 from '@/components/views/dashboard/Dashboard2.vue'
 import Dashboard3 from '@/components/views/dashboard/Dashboard3.vue'
-import Settings from '@/components/Settings.vue'
+import Settings from '@/components/views/pages/Settings.vue'
 import Stepper from '@/components/views/ui/Stepper.vue'
-import Test from '@/components/views/pages/Test.vue'
-import RegisterFarmer from '@/components/views/pages/RegisterFarmer.vue'
 import RegisterSociety from '@/components/views/pages/RegisterSociety.vue'
 import CoffeeDelivery from '@/components/views/pages/CoffeeDelivery.vue'
 import Report from '@/components/views/pages/Report.vue'
@@ -38,6 +36,11 @@ const router = createRouter({
       component: ForgotPassword,
     },
     {
+      path: '/report',
+      name: 'report',
+      component: Report,
+    },
+    {
       path: '/dashboard',
       name: 'dashboard',
       component: Home,
@@ -48,11 +51,7 @@ const router = createRouter({
      // meta: { requiresAuth: true },
       component: Dashboard1,
     },
-    {
-      path: '/farmerdetails',
-      name: 'test2',
-      component: Test,
-    },
+  
 
     {
       path:'/societydetails',
@@ -67,8 +66,8 @@ const router = createRouter({
     },
 
     {
-      path: '/test4',
-      name: 'test4',
+      path: '/farmerdetails',
+      name: 'farmerdetails',
       component: Dashboard3,
     },
     {
@@ -82,9 +81,9 @@ const router = createRouter({
     //   component: Test,
     // },
     {
-      path: '/Settings',
-      name: 'settings',
-      component: Dashboard3,
+      path: '/settings',
+      name: 'Settings',
+      component: Settings,
     },
   ],
 })

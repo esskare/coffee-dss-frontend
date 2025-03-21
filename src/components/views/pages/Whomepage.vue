@@ -1,67 +1,37 @@
 <template>
-    <div class="p-1 md:p-1">
-      <!-- Greeting Section -->
-      <div class="bg-green-50 p-3 md:p-3 rounded-lg flex flex-col md:flex-row items-center justify-between">
-        <!-- Left Side - Text Content -->
-        <div class="max-w-lg">
-          <h1 class="text-2xl md:text-3xl font-semibold">
-            Good afternoon <span class="inline-block">👋</span>
-          </h1>
-          <h2 class="text-3xl md:text-4xl font-bold mt-1">Reuben Kihiu</h2>
-          <p class="text-gray-600 mt-3">
-            Here are a few things you can do to get your afternoon started
-          </p>
-
-          <!-- Buttons -->
-          <div class="mt-6 flex gap-4">
-            <button class="bg-green-900 text-white px-6 py-3 rounded-lg">
-              Record Coffee Delivery
-            </button>
-            <button class="bg-green-500 text-white px-6 py-3 rounded-lg">
-              Add New Farmer
-            </button>
-          </div>
+  <div class="flex flex-col md:flex-row h-screen w-full overflow-y-auto">
+    <Navigation class="w-16 md:w-1/6 flex-shrink-0" />
+    <div class="flex-grow overflow-y-auto flex flex-col">
+    <Header class="z-40"/>
+      <!--           <Greetings/>
+           <DataTableDashboard/>-->
+      <div class="flex flex-col md:flex-row">
+        <!-- Main Content Area - 70% width on desktop -->
+        <div class="md:w-7/10">
+          <Greetings/>
+          <DashboardMetrics/>
+          <DataTableDashboard/>
+<!--                  <DashboardChart/>-->
         </div>
 
-        <!-- Right Side - Illustration -->
-        <div class="hidden md:block w-64">
-          <img src="@/assets/images/header.svg" alt="Illustration" class="w-full h-auto" />
+        <!-- Vertical Divider -->
+        <div class="hidden md:block w-[1px] bg-custom-grey2 my-5"></div>
+
+        <!-- Sidebar - 30% width on desktop -->
+        <div class="w-full md:w-3/10">
+          <Sidebar/>
         </div>
       </div>
-
-      <!-- Cards Section -->
-      <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
-        <Card
-          title="Coffee Delivered Today"
-          weight="5,370"
-          percentage="15.4%"
-          bgColor="bg-green-100"
-          strokeColor="text-green-500"
-        />
-        <Card
-          title="Orders Processed"
-          weight="1,245"
-          percentage="8.2%"
-          bgColor="bg-blue-100"
-          strokeColor="text-blue-500"
-        />
-        <Card
-          title="Revenue Generated"
-          weight="$12,450"
-          percentage="22.3%"
-          bgColor="bg-yellow-100"
-          strokeColor="text-yellow-500"
-        />
-      </div>
+      <!-- You can add main content area here later -->
     </div>
+  </div>
 </template>
 
 <script setup>
-
-defineProps({
-  title: {
-    type: String,
-    default: 'Content'
-  }
-});
+import Navigation from '@/components/views/base/Navbar.vue'
+import Header from '@/components/views/base/Header.vue'
+import Greetings from '@/components/views/dashboard/Greetings.vue'
+import DataTableDashboard from '@/components/views/dashboard/DataTableDashboard.vue'
+import Sidebar from '@/components/views/dashboard/Sidebar.vue'
+import DashboardMetrics from '@/components/views/dashboard/DashboardMetrics.vue'
 </script>

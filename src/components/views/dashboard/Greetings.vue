@@ -13,12 +13,18 @@
       </h1>-->
 
       <div class="mt-6 flex gap-4">
-        <button class="bg-primary-800-main text-white px-4 py-2 rounded-lg text-sm ">
-          Record Coffee Delivery
-        </button>
-        <button class="bg-secondary-400-main text-white px-4 py-2 rounded-lg text-sm">
-          Add New Farmer
-        </button>
+        <button @click="$router.push('/coffeedelivery')"
+  class="bg-primary-800-main text-white px-4 py-2 rounded-lg text-sm"
+>
+  Record Coffee Delivery
+</button>
+
+<button @click="$router.push('/test4')"
+  class="bg-secondary-400-main text-white px-4 py-2 rounded-lg text-sm"
+>
+  Add New Farmer
+</button>
+
       </div>
     </div>
 

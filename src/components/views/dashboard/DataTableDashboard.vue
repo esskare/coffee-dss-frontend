@@ -75,9 +75,12 @@
 
     <!-- Button -->
     <div class="mt-4">
-      <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm">
-        View All Batches →
-      </button>
+      <button @click="$router.push('/report')"
+  class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm"
+>
+  View All Batches →
+</button>
+
     </div>
   </div>
 </template>
