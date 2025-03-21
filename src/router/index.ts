@@ -16,7 +16,7 @@ import Dashboard4 from '@/components/views/dashboard/Dashboard4.vue'
 import DashboardW from '@/components/views/dashboard/DashboardW.vue'
 import DashboardC from '@/components/views/dashboard/DashboardC.vue'
 import Whomepage from '@/components/views/pages/Whomepage.vue'
-
+import StoredCoffee from '@/components/views/pages/StoredCoffee.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -39,6 +39,12 @@ const router = createRouter({
       path: '/report',
       name: 'report',
       component: Report,
+    },
+
+    {
+      path: '/store',
+      name: 'StoredCoffee',
+      component: StoredCoffee,
     },
     {
       path: '/dashboard',

@@ -110,7 +110,7 @@
   
   const navItems = ref([
     { name: 'Dashboard', icon: 'Home', isOpen: false, route: '/dashboard', children: [] },
-    { name: 'Coffee in Store', icon: 'Paperclip2', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
+    { name: 'Coffee in Store', icon: 'Paperclip2', isOpen: false, children: [{ name: 'View', route: '/store', }] },
     { name: 'Societies', icon: 'Verify', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
     { name: 'Oranization', icon: 'Wallet', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] }
   ]);

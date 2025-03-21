@@ -19,7 +19,7 @@
   Record Coffee Delivery
 </button>
 
-<button @click="$router.push('/test4')"
+<button @click="$router.push('/farmerdetails')"
   class="bg-secondary-400-main text-white px-4 py-2 rounded-lg text-sm"
 >
   Add New Farmer
