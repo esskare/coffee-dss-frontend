@@ -76,7 +76,7 @@
         <!-- Settings Link -->
         <li>
           <router-link
-            to="/Settings"
+            to="/test5"
             class="hover:bg-primary-800-main cursor-pointer transition-colors duration-400 text-primary-500-neutral hover:text-white rounded-md group p-2 flex items-center">
             <VsxIcon iconName="Settings" size="15" type="linear" />
             <span v-if="isNavOpen" class="whitespace-nowrap text-sm duration-100 px-2">Settings</span>
@@ -110,8 +110,8 @@ const isMobile = ref(false);
 const navItems = ref([
   { name: 'Dashboard', icon: 'Home', isOpen: false, route: '/dashboard', children: [] },
   { name: 'Farmer', icon: 'People', isOpen: false, children: [{ name: 'Onboard', route: '/farmerdetails'}, { name: 'View', route: '/farmerdetails' }] },
-  { name: 'Miller', icon: 'Coffee', isOpen: false, children: [{ name: 'Upload' }, { name: 'View', route: '/test5' }] },
-  { name: 'Warehouse', icon: 'UserAdd', isOpen: false, children: [{ name: 'Upload', route:'/societydetails' }, { name: 'View', route:'/Whomepage' }] },
+  { name: 'Miller', icon: 'Coffee', isOpen: false, children: [{ name: 'Upload' }, { name: 'View', route: '/Settings' }] },
+  { name: 'Warehouse', icon: 'UserAdd', isOpen: false, children: [{ name: 'Upload', route:'/societydetails' }, { name: 'View', route:'/warehouse' }] },
   { name: 'Broker', icon: 'Paperclip2', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
   { name: 'NCE', icon: 'Verify', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
   { name: 'Payments', icon: 'Wallet', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] }
