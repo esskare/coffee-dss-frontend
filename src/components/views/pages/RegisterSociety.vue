@@ -141,7 +141,7 @@
                 />
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1"> Parchment Transport Charge</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1"> Transport Charge</label>
                 <input
                   id="parchmentcharges"
                   v-model="formData.parchmentcharges"
@@ -183,7 +183,7 @@
 </div>
 
 
-     
+
 
         <!-- Step navigation buttons -->
         <div class="flex justify-between bottom-0 bg-custom-grey3 py-4 pb-32">
