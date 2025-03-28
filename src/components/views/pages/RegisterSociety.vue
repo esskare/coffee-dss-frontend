@@ -131,22 +131,117 @@
           <div v-if="currentStep === 2" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Transport Charge </label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Milling Charge </label>
                 <input
-                  id="transportfees"
-                  v-model="formData.transportfees"
+                  id="milling charge"
+                  v-model="formData.millingcharge"
                   type="text"
-                  placeholder="Storage fees"
+                  placeholder="Enter Milling Charge"
                   class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1"> Transport Charge</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Parchment Transport Charge</label>
                 <input
                   id="parchmentcharges"
                   v-model="formData.parchmentcharges"
                   type="text"
                   placeholder="Enter parchment transport charge"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Clean Handsorting Charge</label>
+                <input
+                  id="handsortingcharge"
+                  v-model="formData.chandsortingcharge"
+                  type="text"
+                  placeholder="Enter clean handsorting charge"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Parchment Drying Charge</label>
+                <input
+                  id="pdryingcharge"
+                  v-model="formData.pdryingcharge"
+                  type="text"
+                  placeholder="Enter parchment drying charge"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Clean Storage Charge</label>
+                <input
+                  id="cstoragecharge"
+                  v-model="formData.cstoragecharge"
+                  type="text"
+                  placeholder="Enter clean storage charge"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Clean Transport Charge</label>
+                <input
+                  id="ctransportcharge"
+                  v-model="formData.ctransportcharge"
+                  type="text"
+                  placeholder="Enter Clean Transport Charge"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Parchment Handling Charge</label>
+                <input
+                  id="phandlingcharge"
+                  v-model="formData.phandlingcharge"
+                  type="text"
+                  placeholder="Enter Parchment Handling Charge"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Clean Handling Charge</label>
+                <input
+                  id="chandlingcharge"
+                  v-model="formData.chandlingcharge"
+                  type="text"
+                  placeholder="Enter Clean Handling Charge"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Color Sorting Charge</label>
+                <input
+                  id="sortingcharge"
+                  v-model="formData.sortingcharge"
+                  type="text"
+                  placeholder="Enter Color Sorting Charge"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Export Bag Charge</label>
+                <input
+                  id="exportcharge"
+                  v-model="formData.exportcharge"
+                  type="text"
+                  placeholder="Enter Export Bag Charge"
                   class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
@@ -237,9 +332,17 @@ const formData = ref({
   growerCode: '',
 
   // Step 2
-  transportfees: '',
+  millingcharge: '',
   parchmentcharges: '',
-
+  chandsortingcharge: ' ',
+  cstoragecharge :'',
+  phandlingcharge: ' ',
+  sortingcharge : '',
+  pdryingcharge: ' ',
+  ctransportcharge: ' ',
+  phandlingcharge: ' ',
+  chandlingcharge: ' ',
+  exportcharge: ' ',
 
   // Step 3
   uploadedFiles: [],
@@ -272,7 +375,17 @@ const validateStep = () => {
       }
       break
     case 2:
-      if (!formData.value.transportfees.trim() || !formData.value.parchmentcharges.trim()) {
+      if (!formData.value.millingcharge.trim() ||
+          !formData.value.chandlingcharge.trim() ||
+          !formData.value.chandsortingcharge.trim() ||
+          !formData.value.cstoragecharge.trim() ||
+          !formData.value.ctransportcharge.trim() ||
+          !formData.value.parchmentcharges.trim() ||
+          !formData.value.phandlingcharge.trim() ||
+          !formData.value.sortingcharge.trim() ||
+          !formData.value.exportcharge.trim() ||
+          !formData.value.pdryingcharge.trim()
+        ) {
         errorMessage.value = 'All fields are required.'
         return false
       }
