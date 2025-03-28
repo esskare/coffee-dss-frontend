@@ -110,8 +110,8 @@ const isMobile = ref(false);
 const navItems = ref([
   { name: 'Dashboard', icon: 'Home', isOpen: false, route: '/dashboard', children: [] },
   { name: 'Farmer', icon: 'People', isOpen: false, children: [{ name: 'Onboard', route: '/farmerdetails'}, { name: 'View', route: '/farmerdetails' }] },
-  { name: 'Miller', icon: 'Coffee', isOpen: false, children: [{ name: 'Upload' }, { name: 'View', route: '/Settings' }] },
-  { name: 'Warehouse', icon: 'UserAdd', isOpen: false, children: [{ name: 'Upload', route:'/societydetails' }, { name: 'View', route:'/warehouse' }] },
+  { name: 'Miller', icon: 'Coffee', isOpen: false, children: [{ name: 'Upload', route: '/societydetails' }, { name: 'View', route: '/Settings' }] },
+  { name: 'Warehouse', icon: 'UserAdd', isOpen: false, children: [{ name: 'Upload', route:'/receivedcoffee' }, { name: 'View', route:'/warehouse' }] },
   { name: 'Broker', icon: 'Paperclip2', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
   { name: 'NCE', icon: 'Verify', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
   { name: 'Payments', icon: 'Wallet', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] }

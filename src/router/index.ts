@@ -17,6 +17,7 @@ import DashboardW from '@/components/views/dashboard/DashboardW.vue'
 import DashboardC from '@/components/views/dashboard/DashboardC.vue'
 import Whomepage from '@/components/views/pages/Whomepage.vue'
 import StoredCoffee from '@/components/views/pages/StoredCoffee.vue'
+import DashboardR from '@/components/views/dashboard/DashboardR.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -57,7 +58,7 @@ const router = createRouter({
      // meta: { requiresAuth: true },
       component: Dashboard1,
     },
-  
+
 
     {
       path:'/societydetails',
@@ -69,6 +70,12 @@ const router = createRouter({
       path:'/coffeedelivery',
       name: 'coffeedelivery',
       component: DashboardC,
+    },
+
+    {
+      path:'/receivedcoffee',
+      name: 'receivedcoffee',
+      component: DashboardR ,
     },
 
     {

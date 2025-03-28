@@ -126,52 +126,90 @@
               />
             </div>
           </div>
+<!-- Step 2: Confirm Personal Details -->
+<div v-if="currentStep === 2" class="space-y-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- First Column -->
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">First Name</label>
+        <input
+          v-model="formData.firstName"
+          type="text"
+          class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Middle Name</label>
+        <input
+          v-model="formData.middleName"
+          type="text"
+          class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Last Name</label>
+        <input
+          v-model="formData.lastName"
+          type="text"
+          class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <input
+          v-model="formData.email"
+          type="email"
+          class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+    </div>
 
-          <!-- Step 2: Confirm Personal Details -->
-          <div v-if="currentStep === 2" class="space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                <input
-                  v-model="formData.fullName"
-                  type="text"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                <input
-                  v-model="formData.phoneNumber"
-                  type="text"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input
-                  v-model="formData.email"
-                  type="email"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
-                <input
-                  v-model="formData.address"
-                  type="text"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-            </div>
-          </div>
+    <!-- Second Column -->
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+        <input
+          v-model="formData.phoneNumber"
+          type="text"
+          class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Gender</label>
+        <input
+          v-model="formData.gender"
+          type="text"
+          class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">KRA Pin</label>
+        <input
+          v-model="formData.krapin"
+          type="text"
+          class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Member Number</label>
+        <input
+          v-model="formData.membernumber"
+          type="text"
+          class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 
           <!-- Step 3: Farm Details -->
           <div v-if="currentStep === 3" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Farm Name</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Location of Farm</label>
                 <input
-                  v-model="formData.farmName"
+                  v-model="formData.farmLocation"
                   type="text"
                   class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
@@ -198,9 +236,9 @@
                 </select>
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Farm Location</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Historical Deliveries</label>
                 <input
-                  v-model="formData.farmLocation"
+                  v-model="formData.farmHistory"
                   type="text"
                   class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
@@ -211,6 +249,19 @@
           <!-- Step 4: Payment Details -->
           <div v-if="currentStep === 4" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Payment Method</label>
+                <select
+                  v-model="formData.paymentMethod"
+                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                >
+                  <option value="">Select payment method</option>
+                  <option value="bank">Bank Transfer</option>
+                  <option value="mobile">Mobile Money</option>
+                  <option value="cash">Cash</option>
+                </select>
+              </div>
+              <br>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Bank Name</label>
                 <input
@@ -227,26 +278,7 @@
                   class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Payment Method</label>
-                <select
-                  v-model="formData.paymentMethod"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                >
-                  <option value="">Select payment method</option>
-                  <option value="bank">Bank Transfer</option>
-                  <option value="mobile">Mobile Money</option>
-                  <option value="cash">Cash</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Tax ID</label>
-                <input
-                  v-model="formData.taxId"
-                  type="text"
-                  class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
+
             </div>
           </div>
         </div>
@@ -308,22 +340,27 @@ const formData = ref({
   idNumber: '',
 
   // Step 2
-  fullName: '',
+  firstName: '',
+  middleName: '',
+  lastName: '',
+  gender:'',
+  krapin: '',
+  dob: '',
+  membernumber: '',
   phoneNumber: '',
   email: '',
-  address: '',
+
 
   // Step 3
-  farmName: '',
+  farmLocation: '',
   farmSize: null,
   primaryCrop: '',
-  farmLocation: '',
+  farmHistory: '',
 
   // Step 4
   bankName: '',
   accountNumber: '',
-  paymentMethod: '',
-  taxId: ''
+  paymentMethod: ''
 })
 
 // Error message
@@ -353,10 +390,14 @@ const validateStep = () => {
       break
     case 2:
       if (
-        !formData.value.fullName.trim() ||
+        !formData.value.firstName.trim() ||
+        !formData.value.middleName.trim() ||
+        !formData.value.lastName.trim() ||
+        !formData.value.membernumber.trim() ||
+        !formData.value.gender.trim() ||
+        !formData.value.krapin.trim() ||
         !formData.value.phoneNumber.trim() ||
-        !formData.value.email.trim() ||
-        !formData.value.address.trim()
+        !formData.value.email.trim()
       ) {
         errorMessage.value = 'All fields are required.'
         return false
@@ -364,10 +405,10 @@ const validateStep = () => {
       break
     case 3:
       if (
-        !formData.value.farmName.trim() ||
+        !formData.value.farmLocation.trim() ||
         !formData.value.farmSize ||
         !formData.value.primaryCrop.trim() ||
-        !formData.value.farmLocation.trim()
+        !formData.value.farmHistory.trim()
       ) {
         errorMessage.value = 'All fields are required.'
         return false
@@ -377,8 +418,7 @@ const validateStep = () => {
       if (
         !formData.value.bankName.trim() ||
         !formData.value.accountNumber.trim() ||
-        !formData.value.paymentMethod.trim() ||
-        !formData.value.taxId.trim()
+        !formData.value.paymentMethod.trim()
       ) {
         errorMessage.value = 'All fields are required.'
         return false
@@ -400,12 +440,16 @@ const goToNextStep = async () => {
     // await fetchFarmerDetails()
 
     // For demonstration - populate with sample data
-    if (formData.value.idNumber) {
-      formData.value.fullName = 'John Doe'
-      formData.value.phoneNumber = '+1234567890'
-      formData.value.email = 'john.doe@example.com'
-      formData.value.address = '123 Farm Road, Countryside'
-    }
+    // if (formData.value.idNumber) {
+    //   formData.value.firstName = 'John '
+    //   formData.value.middleName = 'Doe'
+    //   formData.value.lastName = 'Schneider'
+    //   formData.value.gender = 'Male'
+    //   formData.value.krapin = 'A39086745'
+    //   formData.value.membernumber = 56
+    //   formData.value.phoneNumber = '+1234567890'
+    //   formData.value.email = 'john.doe@example.com'
+    // }
   }
 
   if (currentStep.value < steps.length) {

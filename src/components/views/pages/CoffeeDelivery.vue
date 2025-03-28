@@ -140,7 +140,7 @@
                   class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
-             
+
             </div>
           </div>
         </div>
@@ -181,7 +181,7 @@ const steps = [
     category: 'Delivery',
     title: 'Weight Delivered',
   },
-  
+
 ]
 
 // Form state
