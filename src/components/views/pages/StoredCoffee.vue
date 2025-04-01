@@ -1,10 +1,10 @@
 <template>
-            <Navigation class="w-16 md:w-1/6 flex-shrink-0" />
+    <Navigation class="w-16 md:w-1/6 flex-shrink-0" />
     <div class="rounded-lg border border-gray-300 md:ml-10 md:mr-10">
 
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2 ml-10 mr-10">
         <div class="px-1 py-4">
-            
+
           <h1 class="text-sm font-bold">All batches</h1>
           <span class=" text-xs">These are the batches of coffee currently in the pipeline</span>
         </div>
@@ -14,7 +14,7 @@
           </button>
         </div>
       </div>
-  
+
       <div class="flex flex-col lg:flex-row justify-between py-3 px-3">
         <div class="relative w-full lg:w-1/3">
           <input
@@ -29,7 +29,7 @@
             </svg>
           </div>
         </div>
-  
+
         <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
           <div class="w-full sm:w-40">
             <select class="w-full border rounded p-2 text-xs" id="stageFilter">
@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-  
+
       <div class="overflow-x-auto overflow-y-auto max-h-96 rounded-lg mb-6 md:overflow-visible md:max-h-full">
       <!-- Table -->
       <table id="batchesTable" ref="dataTable" class="min-w-full table-auto">
@@ -68,26 +68,26 @@
         <tbody class="text-xs">
         <!-- DataTables will populate this -->
         </tbody>
-        
+
       </table>
 
     </div>
     </div>
-    <Sidebar/>
+
   </template>
-  
+
   <script setup>
   import { ref, onMounted } from 'vue';
   import { nextTick } from 'vue';
   import Navigation from '@/components/views/base/Navbar.vue'
-  import Sidebar from '@/components/views/dashboard/Sidebar.vue'
-  
+
+
   import api from '@/components/services/api.js';
-  
+
   const dataTable = ref(null);
   const selectAll = ref(false);
   let tableInstance = null;
-  
+
   const toggleSelectAll = () => {
     if (tableInstance) {
       const data = tableInstance.data().toArray();
@@ -97,7 +97,7 @@
       tableInstance.rows().invalidate().draw();
     }
   };
-  
+
   // Fetch users with pagination
   async function fetchUsers(start, length, searchValue = '') {
     console.log("Fetching users...");
@@ -108,7 +108,7 @@
         length,
         searchValue,
       }).toString();
-  
+
       const response = await api.get(`/api/sca/v1/auth/vuetest2?${params}`);
       console.log("Response:", response);
       console.log("Response2:", response.content);
@@ -118,14 +118,14 @@
       return { data: [], totalRecords: 0 }; // Return empty data if the request fails
     }
   }
-  
+
   // Initialize DataTable with server-side processing
   const initializeDataTable = async () => {
     // Load jQuery and DataTables scripts dynamically
     await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js');
     await loadScript('https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js');
     await loadScript('https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js');
-  
+
     // Load CSS files
     const addStylesheet = (href) => {
       const link = document.createElement('link');
@@ -133,13 +133,13 @@
       link.href = href;
       document.head.appendChild(link);
     };
-  
+
     addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css');
     addStylesheet('https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css');
-  
+
     // Wait for the next tick to ensure Vue has finished rendering
     await nextTick();
-  
+
     // Initialize DataTable with server-side processing
     tableInstance = $(dataTable.value).DataTable({
       serverSide: true,
@@ -152,7 +152,7 @@
         const start = data.start;
         const length = data.length;
         const searchValue = $('#customSearch').val();;
-  
+
         const response = await fetchUsers(start, length, searchValue);
         console.log("-------------", response)
         callback({
@@ -192,14 +192,14 @@
         info: "_START_ - _END_ of _TOTAL_"
       }
     });
-  
+
     // Custom search with the search box at the top
     $('#customSearch').on('keyup', function() {
       console.log("this - ", this.value)
       tableInstance.search(this.value).draw();
     });
   };
-  
+
   // Load external scripts
   const loadScript = (url) => {
     return new Promise((resolve, reject) => {
@@ -210,12 +210,12 @@
       document.head.appendChild(script);
     });
   };
-  
+
   // Render functions
   const renderCheckbox = (data, type, row) => {
     return `<input type="checkbox" class="batch-checkbox" data-id="${row.id}" ${row.selected ? 'checked' : ''}>`;
   };
-  
+
   const renderGrade = (data, type, row) => {
     let colorClass = 'bg-gray-100 text-gray-700';
     if (data === 'P1') colorClass = 'bg-yellow-100 text-yellow-700';
@@ -223,7 +223,7 @@
     else if (data === 'P3') colorClass = 'bg-red-100 text-red-700';
     return `<span class="px-2 py-1 rounded text-xs font-medium ${colorClass}">${data}</span>`;
   };
-  
+
   const renderStage = (data, type, row) => {
     let colorClass = '';
     if (data === 'Ready for Dispatch') colorClass = 'bg-orange-100 text-orange-700';
@@ -231,7 +231,7 @@
     else if (data === 'Milling') colorClass = 'bg-blue-100 text-blue-700';
     return `<span class="px-2 py-1 rounded text-xs font-sm ${colorClass}">${data}</span>`;
   };
-  
+
   const renderAction = (data, type, row) => {
     if (data === 'Dispatch') {
       return `<button class="bg-green-600 hover:bg-green-700 text-white px-2 sm:px-4 py-1 rounded flex items-center text-xs sm:text-sm">
@@ -250,7 +250,7 @@
     }
     return '';
   };
-  
+
   // On mounted lifecycle hook
   onMounted(async () => {
     try {
@@ -260,8 +260,7 @@
     }
   });
   </script>
-  
+
   <style>
   /* Add your custom styles here */
   </style>
-  

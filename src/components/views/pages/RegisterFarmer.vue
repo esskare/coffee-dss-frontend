@@ -278,6 +278,9 @@
                   class="w-full border border-gray-300 rounded-md text-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
+              <div v-if="loading" class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+      </div>
 
             </div>
           </div>
@@ -362,7 +365,7 @@ const formData = ref({
   accountNumber: '',
   paymentMethod: ''
 })
-
+// loading page
 // Error message
 const errorMessage = ref('')
 
