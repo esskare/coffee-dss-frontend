@@ -19,6 +19,7 @@ import Whomepage from '@/components/views/pages/Whomepage.vue'
 import StoredCoffee from '@/components/views/pages/StoredCoffee.vue'
 import DashboardR from '@/components/views/dashboard/DashboardR.vue'
 import Societies from '@/components/views/pages/Societies.vue'
+import Fregistration from '@/components/views/base/Fregistration.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -57,6 +58,12 @@ const router = createRouter({
       path: '/store',
       name: 'StoredCoffee',
       component: StoredCoffee,
+    },
+
+    {
+      path: '/Fregistration',
+      name: 'regsuccessful',
+      component: Fregistration,
     },
 
     {

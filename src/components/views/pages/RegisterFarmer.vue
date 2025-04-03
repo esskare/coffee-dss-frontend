@@ -71,15 +71,16 @@
         <div class="flex justify-between items-center">
           <h1 class="text-xl md:text-base font-bold">Register New Farmer</h1>
           <button
-            class="flex items-center gap-2 px-3 py-1 md:px-4 md:py-2 rounded-full bg-red-100 text-red-500 hover:bg-red-200"
-          >
-            <span class="hidden md:inline">Close</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
+  class="flex items-center gap-2 px-3 py-1 md:px-4 md:py-2 rounded-full bg-red-100 text-red-500 hover:bg-red-200"
+  @click="$router.push('/dashboard')"
+>
+  <span class="hidden md:inline">Close</span>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </svg>
+</button>
+</div>
       </div>
 
       <!-- Scrollable Content -->
@@ -455,16 +456,16 @@ const goToNextStep = async () => {
     // }
   }
 
-  if (currentStep.value < steps.length) {
-    currentStep.value++
-    // Scroll to top when changing steps
-    window.scrollTo(0, 0)
-  } else {
-    // Submit the form
-    console.log(formData.value)
-    alert('Form submitted!')
-    // handleSubmit()
-  }
+ // Inside your goToNextStep method
+if (currentStep.value < steps.length) {
+  currentStep.value++
+  window.scrollTo(0, 0)
+} else {
+  // Submit the form and redirect to /Fregistration
+  console.log(formData.value)
+  alert('Form submitted!')
+  window.location.href = '/Fregistration';}
+
 }
 
 const goToPreviousStep = () => {

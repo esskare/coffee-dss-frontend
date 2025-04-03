@@ -28,10 +28,13 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const close = () => {
-  router.push('/dashboard'); 
+  console.log('Navigating to /dashboard');
+  router.push('/dashboard');
 };
 
+
 const addNewFarmer = () => {
-  router.push('/farmerdetails'); 
+
+  router.push('/farmerdetails');
 };
 </script>
