@@ -29,7 +29,7 @@
     <div class="flex-grow overflow-y-auto">
       <nav class="mt-3 p-2">
         <ul>
-          <li v-for="(item, index) in navItems" :key="index"
+          <li v-for="(item, index) in filteredNavItems" :key="index"
               class="hover:bg-primary-800-main cursor-pointer transition-colors duration-400 text-primary-500-neutral hover:text-white rounded-md group">
             <!-- Main Navigation Items -->
             <router-link
@@ -57,7 +57,7 @@
                  :style="{ 'margin-left': '1.5rem' }">
               <div class="pl-2 border-l border-gray-500">
                 <router-link
-                  v-for="(child, childIndex) in item.children"
+                  v-for="(child, childIndex) in getFilteredChildren(item.children)"
                   :key="`${index}-${childIndex}`"
                   :to="child.route"
                   class="py-2 cursor-pointer transition-colors duration-150 flex items-center">
@@ -100,31 +100,85 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { VsxIcon } from "vue-iconsax";
 import router from '@/router/index.js'
 
 const isNavOpen = ref(false);
 const isMobile = ref(false);
+const userRoles = ref([]);
 
 const navItems = ref([
-  { name: 'Dashboard', icon: 'Home', isOpen: false, route: '/dashboard', children: [] },
-  { name: 'Farmer', icon: 'People', isOpen: false, children: [{ name: 'Onboard', route: '/farmerdetails'}, { name: 'View', route: '/farmerdetails' }] },
-  { name: 'Miller', icon: 'Coffee', isOpen: false, children: [{ name: 'Upload', route: '/societydetails' }, { name: 'View' }] },
-  { name: 'Warehouse', icon: 'UserAdd', isOpen: false, children: [{ name: 'Upload', route:'/receivedcoffee' }, { name: 'View', route:'/warehouse' }] },
-  { name: 'Broker', icon: 'Paperclip2', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
-  { name: 'NCE', icon: 'Verify', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] },
-  { name: 'Payments', icon: 'Wallet', isOpen: false, children: [{ name: 'Upload' }, { name: 'View' }] }
+  { name: 'Dashboard', icon: 'Home', isOpen: false, allowedRoles: ['CAN_VIEW_MILLER_CHARGE'], route: '/dashboard', children: [] },
+  { name: 'Farmer', icon: 'People', isOpen: false, allowedRoles: ['CAN_VIEW_DSS_ACCOUNT_REPORT'], children: [{ name: 'Onboard', route: '/farmerdetails', allowedRoles: ['CAN_VIEW_DSS_ACCOUNT_REPORT']}, { name: 'View', route: '/farmerdetails', allowedRoles: ['ROLE_ADMIN'] }] },
+  { name: 'Miller', icon: 'Coffee', isOpen: false, allowedRoles: ['ROLE_ADMIN'], children: [{ name: 'Upload', route: '/societydetails' }, { name: 'View' }] },
+  { name: 'Warehouse', icon: 'UserAdd', isOpen: false, allowedRoles: ['ROLE_ADMIN'], children: [{ name: 'Upload', route:'/receivedcoffee' }, { name: 'View', route:'/warehouse' }] },
+  { name: 'Broker', icon: 'Paperclip2', isOpen: false, allowedRoles: ['ROLE_ADMIN'], children: [{ name: 'Upload' }, { name: 'View' }] },
+  { name: 'NCE', icon: 'Verify', isOpen: false, allowedRoles: ['ROLE_ADMIN'], children: [{ name: 'Upload' }, { name: 'View' }] },
+  { name: 'Payments', icon: 'Wallet', isOpen: false, allowedRoles: ['ROLE_ADMIN'], children: [{ name: 'Upload' }, { name: 'View' }] }
 ]);
+
+const getUserRoles = () => {
+  try {
+    const userInfo = localStorage.getItem('dss');
+    console.log("userInfo -> ", userInfo)
+    if (userInfo) {
+      const parsedInfo = JSON.parse(userInfo);
+      console.log("parsedInfo -> ", parsedInfo)
+      console.log("parsedInfo2 -> ", parsedInfo.user.roleId.permissions)
+      // Handle both array and string cases
+      if (Array.isArray(parsedInfo.user.roleId.permissions)) {
+        userRoles.value = parsedInfo.user.roleId.permissions;
+      } else {
+        userRoles.value = [parsedInfo.user.roleId.permissions]; // Convert string to array
+      }
+    } else {
+      userRoles.value = ['ROLE_USER']; // Default role
+    }
+  } catch (error) {
+    console.error('Error parsing user roles:', error);
+    userRoles.value = ['ROLE_USER']; // Default role on error
+  }
+};
+
+// Check if user has any of the required roles for an item
+const hasRequiredRole = (requiredRoles) => {
+  if (!requiredRoles || !requiredRoles.length) return true;
+  return userRoles.value.some(role => requiredRoles.includes(role));
+};
 
 const toggleSubmenu = (index) => {
   if (!isNavOpen.value) isNavOpen.value = true;
-  navItems.value.forEach((item, i) => {
-    if (i !== index) item.isOpen = false;
-  });
-  if (navItems.value[index].children.length) {
-    navItems.value[index].isOpen = !navItems.value[index].isOpen;
+
+  const targetItem = filteredNavItems.value[index];
+  const originalIndex = navItems.value.findIndex(item => item.name === targetItem.name);
+
+  if (originalIndex !== -1) {
+    // Close all other submenus first
+    navItems.value.forEach((item, idx) => {
+      if (idx !== originalIndex) {
+        item.isOpen = false;
+      }
+    });
+
+    // Toggle the clicked item
+    navItems.value[originalIndex].isOpen = !navItems.value[originalIndex].isOpen;
   }
+};
+
+// Filter navigation items based on user roles
+const filteredNavItems = computed(() => {
+  return navItems.value.filter(item => {
+    return hasRequiredRole(item.allowedRoles);
+  });
+});
+
+// Filter children items based on user roles
+const getFilteredChildren = (children) => {
+  if (!children) return [];
+  return children.filter(child => {
+    return !child.allowedRoles || hasRequiredRole(child.allowedRoles);
+  });
 };
 
 const handleSubmenuItemClick = (child) => {
@@ -145,6 +199,7 @@ const handleResize = () => {
 };
 
 onMounted(() => {
+  getUserRoles();
   handleResize(); // Initial check
   window.addEventListener('resize', handleResize);
 });

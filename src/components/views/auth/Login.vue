@@ -89,6 +89,8 @@ const formData = ref({
 
 const handleLogin = async () => {
   try {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     console.log('Form Data:', formData.value); // Check the dynamic values
     const response = await api.post('/api/token/generate-token',formData.value);
     console.log("response - ", response)
@@ -97,6 +99,7 @@ const handleLogin = async () => {
     if (response.token) {
       toast.value?.showToast("Login successful!", "success")
       localStorage.setItem('token', response.token); // Save JWT token
+      localStorage.setItem('dss', JSON.stringify(response)); // Save JWT token
       router.push('/dashboard'); // Redirect after login
     } else {
       toast.value?.showToast("Invalid Username and Password!", "error")
