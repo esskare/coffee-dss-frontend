@@ -93,7 +93,8 @@ const handleLogin = async () => {
     localStorage.removeItem('user');
     console.log('Form Data:', formData.value); // Check the dynamic values
     const response = await api.post('/api/token/generate-token',formData.value);
-    console.log("response - ", response)
+    console.log("response22 - ", response)
+    console.log("responseToken - ", response.token)
     // toastRef.value("Login successful!", "success");
 
     if (response.token) {
