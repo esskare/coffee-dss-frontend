@@ -12,11 +12,11 @@
         >
           <div
             class="absolute w-3 h-3 bg-white border-2 rounded-full -left-1.5 top-1.5"
-            :class="step.current ? 'border-blue-500 bg-blue-500' : 'border-gray-300'"
+            :class="step.current ? 'border-green-600  bg-green-600 ' : 'border-gray-300'"
           ></div>
           <h3
             class="text-sm font-semibold"
-            :class="step.current ? 'text-blue-600' : 'text-gray-600'"
+            :class="step.current ? 'text-green-600 ' : 'text-gray-600'"
           >
             {{ step.name }}
           </h3>
@@ -53,7 +53,7 @@
       <div class="bg-white p-6 mt-6 shadow-lg rounded-lg">
         <div class="flex justify-between items-center mb-4">
           <h3 class="text-lg font-semibold text-gray-800">Source Lots</h3>
-          <span class="px-3 py-1 bg-blue-200 text-blue-800 rounded-full">Milling</span>
+          <span class="px-3 py-1 bg-green-200 rounded-full">Milling</span>
         </div>
         <table class="w-full text-left border-collapse">
           <thead>
@@ -96,8 +96,7 @@ export default {
         { id: 3, outturn: '09KK0006', commodity: 'AA', grower: 'Kahawa Coffee Society', growerCode: '984683', weight: 40 }
       ],
       millingStatus: [
-        { name: 'Received', date: '16th Jun, 2025', current: false },
-        { name: 'Bulking', current: true },
+        { name: 'Received', date: '16th Jun, 2025', current: true },
         { name: 'Milling', current: false },
         { name: 'Storage', current: false },
         { name: 'Awaiting Dispatch', current: false },
