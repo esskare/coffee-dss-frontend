@@ -112,7 +112,7 @@ const navItems = ref([
   { name: 'Dashboard', icon: 'Home', isOpen: false, allowedRoles: ['CAN_VIEW_MILLER_CHARGE', 'CAN_VIEW_CATALOGUE', ], route: '/dashboard', children: [] },
   { name: 'Farmer', icon: 'People', isOpen: false, allowedRoles: ['CAN_VIEW_DSS_ACCOUNT_REPORT'], children: [{ name: 'Onboard', route: '/farmerdetails', allowedRoles: ['CAN_VIEW_DSS_ACCOUNT_REPORT']}, { name: 'View', route: '/farmerdetails', allowedRoles: ['ROLE_ADMIN'] }] },
   { name: 'Miller', icon: 'Coffee', isOpen: false, allowedRoles: [ 'CAN_VIEW_CATALOGUE'], children: [{ name: 'Upload', route: '/coffeedelivery'}, { name: 'Coffee in Store', route: '/store'}] },
-  { name: 'Warehouse', icon: 'UserAdd', isOpen: false, allowedRoles: ['CAN_VIEW_WAREHOUSE_CHARGE'], children: [{ name: 'Upload', route:'/receivedcoffee' }, { name: 'View', route:'/store' }] },
+  { name: 'Warehouse', icon: 'UserAdd', isOpen: false, allowedRoles: ['CAN_VIEW_WAREHOUSE_CHARGE'], children: [{ name: 'Upload', route:'/receivedcoffee' }, { name: 'Coffee in Store', route:'/store' }] },
   { name: 'Organization', icon: 'Verify', isOpen: false, allowedRoles: ['CAN_VIEW_SOCIETY_CHARGE'], children: [{ name: 'Upload', route: '/societydetails' }, { name: 'View',route: '/societies' }] },
   { name: 'Broker', icon: 'Paperclip2', isOpen: false, allowedRoles: ['ROLE_ADMIN'], children: [{ name: 'Upload' }, { name: 'View' }] },
   { name: 'NCE', icon: 'Verify', isOpen: false, allowedRoles: ['ROLE_ADMIN'], children: [{ name: 'Upload' }, { name: 'View' }] },

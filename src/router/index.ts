@@ -13,13 +13,13 @@ import Report from '@/components/views/pages/Report.vue'
 import DataTable from '@/components/views/ui/DataTable.vue'
 import DataTableDashboard from '@/components/views/dashboard/DataTableDashboard.vue'
 import Dashboard4 from '@/components/views/dashboard/Dashboard4.vue'
-import DashboardW from '@/components/views/dashboard/DashboardW.vue'
 import DashboardC from '@/components/views/dashboard/DashboardC.vue'
 import Whomepage from '@/components/views/pages/Whomepage.vue'
 import StoredCoffee from '@/components/views/pages/StoredCoffee.vue'
 import DashboardR from '@/components/views/dashboard/DashboardR.vue'
 import Societies from '@/components/views/pages/Societies.vue'
 import Fregistration from '@/components/views/base/Fregistration.vue'
+import Receivedbatches from '@/components/views/pages/Receivedbatches.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -85,13 +85,6 @@ const router = createRouter({
       component: Dashboard1,
     },
 
-
-    {
-      path:'/societydetails',
-      name: 'societydetails',
-      component: DashboardW,
-    },
-
     {
       path:'/coffeedelivery',
       name: 'coffeedelivery',
@@ -102,6 +95,12 @@ const router = createRouter({
       path:'/receivedcoffee',
       name: 'receivedcoffee',
       component: DashboardR ,
+    },
+
+    {
+      path:'/receivedbatches',
+      name: 'receivedcoffee',
+      component: Dashboard4 ,
     },
 
     {

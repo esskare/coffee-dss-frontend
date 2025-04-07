@@ -3,27 +3,28 @@
   <div class="flex min-h-screen bg-gray-50">
     <!-- Sidebar -->
     <aside class="w-64 bg-white shadow-lg p-6 flex flex-col">
-      <h2 class="text-lg font-bold text-gray-700">Milling Status</h2>
-      <ul class="mt-6 space-y-4">
+      <h2 class="text-lg font-bold text-gray-700 mb-6">Milling Status</h2>
+      <ol class="relative border-l border-gray-300">
         <li
           v-for="(step, index) in millingStatus"
           :key="index"
-          class="flex items-center space-x-3"
+          class="mb-10 ml-4"
         >
-          <span
-            class="w-8 h-8 flex items-center justify-center rounded-full border-2"
-            :class="step.current ? 'border-blue-500 bg-blue-100 text-blue-600' : 'border-gray-400 text-gray-400'"
+          <div
+            class="absolute w-3 h-3 bg-white border-2 rounded-full -left-1.5 top-1.5"
+            :class="step.current ? 'border-blue-500 bg-blue-500' : 'border-gray-300'"
+          ></div>
+          <h3
+            class="text-sm font-semibold"
+            :class="step.current ? 'text-blue-600' : 'text-gray-600'"
           >
-            ✔
-          </span>
-          <div>
-            <p class="text-sm" :class="step.current ? 'text-blue-600 font-semibold' : 'text-gray-600'">
-              {{ step.name }}
-            </p>
-            <p v-if="step.date" class="text-xs text-gray-400">{{ step.date }}</p>
-          </div>
+            {{ step.name }}
+          </h3>
+          <p v-if="step.date" class="text-xs text-gray-400">
+            {{ step.date }}
+          </p>
         </li>
-      </ul>
+      </ol>
     </aside>
 
     <!-- Main Content -->
